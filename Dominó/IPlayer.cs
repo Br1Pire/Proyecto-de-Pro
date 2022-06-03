@@ -8,6 +8,6 @@ namespace Dominó
 {
     internal interface IPlayer
     {
-        void Play();
+        void Play(List<(int, int)> hand, int token1, int token2);
     }
 }
