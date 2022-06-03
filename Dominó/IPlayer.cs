@@ -8,5 +8,6 @@ namespace Dominó
 {
     internal interface IPlayer
     {
+        void Play();
     }
 }
