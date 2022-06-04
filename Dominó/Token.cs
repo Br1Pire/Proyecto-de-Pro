@@ -10,6 +10,7 @@ namespace Dominó
     {
         T LeftElement { get; }
         T RightElement { get; }
+
     }
 
 
@@ -37,6 +38,8 @@ namespace Dominó
 
         }
         public int RightElement { get { return myToken.Item2; } }
+
+        public int Total { get { return myToken.Item1 + myToken.Item2; } }
     }
 
 
@@ -50,10 +53,45 @@ namespace Dominó
             myList = list;
         }
 
-        public TupleToken Largest => throw new NotImplementedException();
+        public TupleToken Largest
+        {
+            get
+            {
+                int highest = -1;
+                int j = 0;
 
-        public TupleToken Smallest => throw new NotImplementedException();
+                for (int i = 0; i < myList.Count; i++)
+                {
+                    if (myList[i].Total > highest)
+                    {
+                        highest=myList[i].Total;
+                        j=i;
+                    }
+                }
 
-        public List<TupleToken> ToList => throw new NotImplementedException();
+                return myList[j];
+            }
+        }
+        public TupleToken Smallest
+        {
+            get
+            {
+                int lowest = int.MaxValue;
+                int j = 0;
+
+                for (int i = 0; i < myList.Count; i++)
+                {
+                    if (myList[i].Total < lowest)
+                    {
+                        lowest = myList[i].Total;
+                        j = i;
+                    }
+                }
+
+                return myList[j];
+            }
+        }
+
+        public List<TupleToken> ToList { get { return myList; } }
     }
 }
