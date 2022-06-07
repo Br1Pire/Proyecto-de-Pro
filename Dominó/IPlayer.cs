@@ -10,8 +10,8 @@ namespace Dominó
     {
         T LeftElement { get; }
         T RightElement { get; }
-    }
 
+    }
     interface ITokensCollection<T> where T : IToken<int> //duda de xq tengo q poner IToken<int> y no IToken<T>
     {
         T Largest { get; }
@@ -19,7 +19,6 @@ namespace Dominó
 
         List<T> ToList { get; }
     }
-
     class TupleToken : IToken<int>
     {
         (int, int) myToken;
@@ -27,10 +26,10 @@ namespace Dominó
         {
             myToken = (a, b);
         }
-        public int LeftElement { get { return myToken.Item1; } }
+        public int LeftElement{ get { return myToken.Item1; } }
         public int RightElement { get { return myToken.Item2; } }
+        public int Total { get { return myToken.Item1 + myToken.Item2; } }
     }
-
     class ListTokenCollection : ITokensCollection<TupleToken>
     {
         public List<TupleToken> myList;
@@ -40,16 +39,48 @@ namespace Dominó
             myList = list;
         }
 
-        public TupleToken Largest => throw new NotImplementedException();
+        public TupleToken Largest
+        {
+            get
+            {
+                int highest = -1;
+                int j = 0;
 
-        public TupleToken Smallest => throw new NotImplementedException();
+                for (int i = 0; i < myList.Count; i++)
+                {
+                    if (myList[i].Total > highest)
+                    {
+                        highest = myList[i].Total;
+                        j = i;
+                    }
+                }
+                return myList[j];
+            }
+        }
+        public TupleToken Smallest
+        {
+            get
+            {
+                int lowest = int.MaxValue;
+                int j = 0;
 
-        public List<TupleToken> ToList => throw new NotImplementedException();
+                for (int i = 0; i < myList.Count; i++)
+                {
+                    if (myList[i].Total < lowest)
+                    {
+                        lowest = myList[i].Total;
+                        j = i;
+                    }
+                }
+
+                return myList[j];
+            }
+        }
+        public List<TupleToken> ToList { get { return myList; } }
     }
     interface IPlayer
     {
         public void AssignHand(ListTokenCollection tokenCollection);
-
         void Play(TupleToken tokenAvailable, ListTokenCollection field);
     }
     class HighScoreDropperPlayer : IPlayer
@@ -64,37 +95,20 @@ namespace Dominó
         }
         public void Play(TupleToken tokenAvailable, ListTokenCollection field)
         {
-            TupleToken tokenToplay = new TupleToken(0, 0);
-            TupleToken[] handToArray = hand.myList.ToArray();
-            int indexToRemove = 0;
-            int HStoken = 0;
-            for (int i = 0; i < handToArray.Length; i++)
+            TupleToken tokenToPlay = hand.Largest;
+            hand.myList.IndexOf(tokenToPlay);
+            int indexToRemove = hand.myList.IndexOf(tokenToPlay);
+            if (tokenToPlay.LeftElement == tokenAvailable.LeftElement)
             {
-                if ((handToArray[i].LeftElement > HStoken) &&
-                    (handToArray[i].LeftElement == tokenAvailable.LeftElement || handToArray[i].LeftElement == tokenAvailable.RightElement))
-                {
-                    tokenToplay = handToArray[i];
-                    indexToRemove = i;
-                }
-                if ((handToArray[i].RightElement > HStoken) &&
-                    (handToArray[i].RightElement == tokenAvailable.LeftElement || handToArray[i].RightElement == tokenAvailable.RightElement))
-                {
-                    tokenToplay = handToArray[i];
-                    indexToRemove = i;
-                }
+                field.ToList.Insert(0, tokenToPlay);
             }
-            if (tokenToplay.LeftElement == tokenAvailable.LeftElement)
-            {
-                field.ToList.Insert(0, tokenToplay);
-            }
-            else field.ToList.Add(tokenToplay);
+            else field.ToList.Add(tokenToPlay);
             hand.myList.RemoveAt(indexToRemove);
         }
     }
     class RandomPlayer : IPlayer
     {
         ListTokenCollection hand;
-
         public RandomPlayer()
         {
         }
@@ -102,7 +116,6 @@ namespace Dominó
         {
             this.hand.myList = tokenCollection.ToList;
         }
-
         public void Play(TupleToken tokenAvailable, ListTokenCollection field)
         {
             TupleToken tokenToplay = new TupleToken(0, 0);
@@ -136,7 +149,6 @@ namespace Dominó
     class SmartPlayer : IPlayer
     {
         ListTokenCollection hand;
-
         public SmartPlayer()
         {
         }
@@ -144,7 +156,6 @@ namespace Dominó
         {
             this.hand.myList = tokenCollection.ToList;
         }
-
         public void Play(TupleToken tokenAvailable, ListTokenCollection field)
         {
             throw new NotImplementedException();
