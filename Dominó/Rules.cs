@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,18 @@ using System.Threading.Tasks;
 
 namespace Dominó
 {
-    public class Rules
+    interface IAmountOfTokens
     {
+        ListTokenCollection GameTokens();
     }
+
+    interface IDropMode
+    {
+        void DropTokens(ListTokenCollection gameTokens);
+    }
+
+    //interface ITurnSelection
+    //{
+    //    void SelectTurns(List<Player> players);
+    //}
 }
