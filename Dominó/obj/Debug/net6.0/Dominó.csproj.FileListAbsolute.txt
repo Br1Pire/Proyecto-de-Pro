@@ -1,11 +1,11 @@
-D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\bin\Debug\net6.0\Dominó.deps.json
-D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\bin\Debug\net6.0\Dominó.dll
-D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\bin\Debug\net6.0\Dominó.pdb
 D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\obj\Debug\net6.0\Dominó.csproj.AssemblyReference.cache
 D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\obj\Debug\net6.0\Dominó.GeneratedMSBuildEditorConfig.editorconfig
 D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\obj\Debug\net6.0\Dominó.AssemblyInfoInputs.cache
 D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\obj\Debug\net6.0\Dominó.AssemblyInfo.cs
 D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\obj\Debug\net6.0\Dominó.csproj.CoreCompileInputs.cache
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\bin\Debug\net6.0\Dominó.deps.json
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\bin\Debug\net6.0\Dominó.dll
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\bin\Debug\net6.0\Dominó.pdb
 D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\obj\Debug\net6.0\Dominó.dll
 D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\obj\Debug\net6.0\refint\Dominó.dll
 D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Dominó\obj\Debug\net6.0\Dominó.pdb

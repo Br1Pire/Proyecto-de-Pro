@@ -1,0 +1,12 @@
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\bin\Debug\net6.0\Standar.deps.json
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\bin\Debug\net6.0\Standar.dll
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\bin\Debug\net6.0\Standar.pdb
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\obj\Debug\net6.0\Standar.csproj.AssemblyReference.cache
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\obj\Debug\net6.0\Standar.GeneratedMSBuildEditorConfig.editorconfig
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\obj\Debug\net6.0\Standar.AssemblyInfoInputs.cache
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\obj\Debug\net6.0\Standar.AssemblyInfo.cs
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\obj\Debug\net6.0\Standar.csproj.CoreCompileInputs.cache
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\obj\Debug\net6.0\Standar.dll
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\obj\Debug\net6.0\refint\Standar.dll
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\obj\Debug\net6.0\Standar.pdb
+D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Standar\obj\Debug\net6.0\ref\Standar.dll
