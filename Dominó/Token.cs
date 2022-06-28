@@ -6,92 +6,136 @@ using System.Threading.Tasks;
 
 namespace Dominó
 {
-    interface IToken<T>
+    public class Token
     {
-        T LeftElement { get; }
-        T RightElement { get; }
+
+        int leftBack;
+        int rightBack;
+
+
+        public Token(int leftBack, int rightBack)
+        {
+            this.leftBack = leftBack;
+            this.rightBack = rightBack;
+        }
+
+        public int LeftBack
+        {
+            get;
+        }
+        public int RightBack
+        {
+            get;
+        }
+
+        public int Score
+        {
+            get { return leftBack + rightBack; }
+        }
+
+        virtual public int Higher()
+        {
+            if (leftBack < rightBack) return rightBack;
+            return leftBack;
+        }
+
+
+        virtual public int Lower()
+        {
+            if (leftBack > rightBack) return rightBack;
+            return leftBack;
+        }
+
+        public void Rotate()
+        {
+            int aux = leftBack;
+            leftBack = rightBack;
+            rightBack = aux;
+        }
+
+        virtual public bool Contains(int value)
+        {
+            return leftBack == value || rightBack == value;
+        }
+
+        public override string ToString()
+        {
+            return "[ " + leftBack + " | " + rightBack + " ]";
+        }
 
     }
 
-
-    interface ITokensCollection<T> where T : IToken<int> //duda de xq tengo q poner IToken<int> y no IToken<T>
+    public class InToken : Token
     {
-        T Largest { get; }
-        T Smallest { get; }
-
-        List<T> ToList { get; }
+        int leftBack;
+        int rightBack;
+        public  InToken(int leftBack, int rightBack) : base(leftBack, rightBack) { }
+        
     }
 
-    class TupleToken : IToken<int>
+    class Animal
     {
-        (int, int) myToken;
-        public TupleToken(int a, int b)
-        {
-            myToken = (a, b);
-        }
-        public int LeftElement
-        {
-            get
-            {
-                return myToken.Item1;
-            }
+        string name;
 
+        public Animal(string name)
+        {
+            this.name = name;
         }
-        public int RightElement { get { return myToken.Item2; } }
 
-        public int Total { get { return myToken.Item1 + myToken.Item2; } }
+        public override bool Equals(object? x)
+        {
+            if (this.name == ((Animal)x).name) return true;
+            return false;
+        }
     }
 
-
-
-    class ListTokenCollection : ITokensCollection<TupleToken>
+    class AnimalToken : Token
     {
-        List<TupleToken> myList;
+        int leftBack;
+        int rightBack;
+        Animal[] guide;
 
-        public ListTokenCollection(List<TupleToken> list)
+        public AnimalToken(int leftBack, int rightBack) : base(leftBack, rightBack)
         {
-            myList = list;
+
+            guide = new Animal[] { new Animal("Lion"), new Animal("Snake"), new Animal("Dog"), new Animal("Cat"), new Animal("Elephant"), new Animal("Mouse"), new Animal("Ant"), new Animal("Falcon"), new Animal("Duck"), new Animal("Worm") };
         }
 
-        public TupleToken Largest
+        public Animal LeftElement
         {
-            get
-            {
-                int highest = -1;
-                int j = 0;
-
-                for (int i = 0; i < myList.Count; i++)
-                {
-                    if (myList[i].Total > highest)
-                    {
-                        highest=myList[i].Total;
-                        j=i;
-                    }
-                }
-
-                return myList[j];
-            }
+            get { return guide[leftBack]; }
         }
-        public TupleToken Smallest
+        public Animal RightElement
         {
-            get
-            {
-                int lowest = int.MaxValue;
-                int j = 0;
-
-                for (int i = 0; i < myList.Count; i++)
-                {
-                    if (myList[i].Total < lowest)
-                    {
-                        lowest = myList[i].Total;
-                        j = i;
-                    }
-                }
-
-                return myList[j];
-            }
+            get { return guide[rightBack]; }
         }
 
-        public List<TupleToken> ToList { get { return myList; } }
+
+        public override bool Contains(int value)
+        {
+
+            return leftBack == value || rightBack == value;
+
+        }
+
+        public override int Higher()
+        {
+            if (leftBack > rightBack) return leftBack;
+            return rightBack;
+        }
+
+        public override int Lower()
+        {
+            if (leftBack < rightBack) return leftBack;
+            return rightBack;
+        }
+
+        public override string ToString()
+        {
+            return "[ " + LeftElement + " | " + RightElement + " ]";
+        }
+
     }
 }
+
+

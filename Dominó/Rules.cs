@@ -7,18 +7,104 @@ using System.Threading.Tasks;
 
 namespace Dominó
 {
-    interface IAmountOfTokens
+
+    #region(Generadores de Fichas)
+    interface TokenAmountGenerator
     {
-        ListTokenCollection GameTokens();
+        public List<Token> GenerateTokens();
+        
+
     }
 
-    interface IDropMode
+    class DoubleSixInToken : TokenAmountGenerator
     {
-        void DropTokens(ListTokenCollection gameTokens);
+
+
+        public List<Token> GenerateTokens()
+        {
+            List<Token> ret = new List<Token>();
+            int index = 0;
+            for (int i = 0; i <= 6; i++)
+            {
+                for (int j = index; j <= 6; j++)
+                {
+                    ret.Add(new InToken(i, j));
+                }
+
+                index++;
+            }
+            return ret;
+
+        }
     }
 
-    //interface ITurnSelection
-    //{
-    //    void SelectTurns(List<Player> players);
-    //}
+    class DoubleSixAnimalToken : TokenAmountGenerator
+    {
+        public List<Token> GenerateTokens()
+        {
+            List<Token> ret = new List<Token>();
+            int index = 0;
+            for (int i = 0; i <= 6; i++)
+            {
+                for (int j = index; j <= 6; j++)
+                {
+                    ret.Add(new AnimalToken(i, j));
+                }
+
+                index++;
+            }
+            return ret;
+
+        }
+    }
+
+    class DoubleNineInToken : TokenAmountGenerator
+    {
+
+
+        public List<Token> GenerateTokens()
+        {
+            List<Token> ret = new List<Token>();
+            int index = 0;
+            for (int i = 0; i <= 6; i++)
+            {
+                for (int j = index; j <= 9; j++)
+                {
+                    ret.Add(new InToken(i, j));
+                }
+
+                index++;
+            }
+            return ret;
+
+        }
+    }
+
+    class DoubleNineAnimalToken : TokenAmountGenerator
+    {
+        public List<Token> GenerateTokens()
+        {
+            List<Token> ret = new List<Token>();
+            int index = 0;
+            for (int i = 0; i <= 9; i++)
+            {
+                for (int j = index; j <= 6; j++)
+                {
+                    ret.Add(new AnimalToken(i, j));
+                }
+
+                index++;
+            }
+            return ret;
+
+        }
+    }
+
+    #endregion
+
+
+    interface TurnSelector
+    {
+
+    }
 }

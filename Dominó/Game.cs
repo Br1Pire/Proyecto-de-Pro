@@ -2,54 +2,54 @@
 
 namespace Dominó
 {
-    public class Token
-    {
-        public int leftItem;
-        public int rightItem;
-        public int score;
+    //public class Token
+    //{
+    //    public int leftItem;
+    //    public int rightItem;
+    //    public int score;
         
 
-        public Token(int leftItem, int rightItem)
-        {
-            this.leftItem = leftItem;
-            this.rightItem = rightItem;
+    //    public Token(int leftItem, int rightItem)
+    //    {
+    //        this.leftItem = leftItem;
+    //        this.rightItem = rightItem;
             
-            this.score = leftItem + rightItem;
-        }
+    //        this.score = leftItem + rightItem;
+    //    }
 
-        public int GetHigher()
-        {
-            if (leftItem < rightItem) return rightItem;
-            else return leftItem;
-        }
+    //    public int GetHigher()
+    //    {
+    //        if (leftItem < rightItem) return rightItem;
+    //        else return leftItem;
+    //    }
 
-        public int GetLower()
-        {
-            if (leftItem > rightItem) return rightItem;
-            else return leftItem;
-        }
-
-        
+    //    public int GetLower()
+    //    {
+    //        if (leftItem > rightItem) return rightItem;
+    //        else return leftItem;
+    //    }
 
         
-        public bool Contain(int x)
-        {
-            return leftItem == x|| rightItem==x;
-        }
 
-        public void Rotate()
-        {
-            int aux = leftItem;
-            leftItem=rightItem;
-            rightItem=aux;
-        }
-
-        public override string ToString()
-        {
-            return "[ " + leftItem + " | " + rightItem + " ]";
-        }
         
-    }
+    //    public bool Contain(int x)
+    //    {
+    //        return leftItem == x|| rightItem==x;
+    //    }
+
+    //    public void Rotate()
+    //    {
+    //        int aux = leftItem;
+    //        leftItem=rightItem;
+    //        rightItem=aux;
+    //    }
+
+    //    public override string ToString()
+    //    {
+    //        return "[ " + leftItem + " | " + rightItem + " ]";
+    //    }
+        
+    //}
 
     public class Game
     {
@@ -244,7 +244,7 @@ namespace Dominó
                 }
             }
 
-            return index;
+            return index+1;
         }
 
         public static int CalculateHandScore(List<Token> hand)
