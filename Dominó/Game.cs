@@ -72,29 +72,29 @@ namespace Dominó
             GenerateTokens(maxToken);
             GetPlayersTurnsRandom();
             this.amountOfTokensPerPlayer = maxToken+1;
-            AssignTokens();
+           // AssignTokens();
         }
 
-        public void Run()
-        {
-            for ( ;  ;turn ++)
-            {
-                if (turn > playersHands.Count)
-                {
-                    turn = 0;
-                    continue;
-                }
+        //public void Run()
+        //{
+        //    for ( ;  ;turn ++)
+        //    {
+        //        if (turn > playersHands.Count)
+        //        {
+        //            turn = 0;
+        //            continue;
+        //        }
 
-                Play();
-                if (CheckEndGame())
-                {
-                    Console.WriteLine("Ha ganado el Player "+ SelectWinner());
-                    break;
-                }
-                Console.WriteLine(PrintStatus());
-                Console.ReadLine();
-            }
-        }
+        //        Play();
+        //        if (CheckEndGame())
+        //        {
+        //            Console.WriteLine("Ha ganado el Player "+ SelectWinner());
+        //            break;
+        //        }
+        //        Console.WriteLine(PrintStatus());
+        //        Console.ReadLine();
+        //    }
+        //}
 
         public void GetPlayersTurnsRandom()
         {
@@ -118,28 +118,28 @@ namespace Dominó
             tokens = ret;
         }
 
-        public void AssignTokens()
-        {
-             List<Token> aux = ((Token[])tokens.ToArray().Clone()).ToList();
+        //public void AssignTokens()
+        //{
+        //     List<Token> aux = ((Token[])tokens.ToArray().Clone()).ToList();
 
-            foreach (var item in playersHands)
-            {
-                int count=0;
-                while (count < amountOfTokensPerPlayer)
-                {
-                    Random x = new Random();
-                    Random y = new Random(x.Next());
+        //    foreach (var item in playersHands)
+        //    {
+        //        int count=0;
+        //        while (count < amountOfTokensPerPlayer)
+        //        {
+        //            Random x = new Random();
+        //            Random y = new Random(x.Next());
 
-                    int index = y.Next(aux.Count);
-                    item.Add(aux[index]);
-                    aux.RemoveAt(index);
-                    count++;
-                }
-                SortByHighers(item);
-            }
-        }
+        //            int index = y.Next(aux.Count);
+        //            item.Add(aux[index]);
+        //            aux.RemoveAt(index);
+        //            count++;
+        //        }
+        //        SortByHighers(item);
+        //    }
+        //}
 
-        public void Play()
+       /* public void Play()
         {
             
             if (table.Count == 0)
@@ -201,27 +201,27 @@ namespace Dominó
 
             timesPassed++;
 
-        }
+        }*/
         #region(Auxiliares de Play)
 
-        public static void SortByHighers(List<Token> playerHand)
-        {
+        //public static void SortByHighers(List<Token> playerHand)
+        //{
 
-            for (int i = 0; i < playerHand.Count; i++)
-            {
-                for (int j = 0; j < playerHand.Count-1; j++)
-                {
-                    if (playerHand[j].score < playerHand[j + 1].score)
-                    {
-                        Token aux=playerHand[j];
-                        playerHand[j]=playerHand[j+1];
-                        playerHand[j+1]=aux;
+        //    for (int i = 0; i < playerHand.Count; i++)
+        //    {
+        //        for (int j = 0; j < playerHand.Count-1; j++)
+        //        {
+        //            if (playerHand[j].score < playerHand[j + 1].score)
+        //            {
+        //                Token aux=playerHand[j];
+        //                playerHand[j]=playerHand[j+1];
+        //                playerHand[j+1]=aux;
                         
-                    }
-                }
-            }
+        //            }
+        //        }
+        //    }
            
-        }
+        //}
 
         #endregion
 
@@ -252,7 +252,7 @@ namespace Dominó
             int ret = 0;
             for (int i = 0; i < hand.Count; i++)
             {
-                ret+=hand[i].score;
+                //ret+=hand[i].score;
             }
             return ret;
         }

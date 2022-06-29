@@ -82,13 +82,23 @@ namespace Dominó
     {
         public void AssignHand(ListTokenCollection tokenCollection);
         void Play(TupleToken tokenAvailable, ListTokenCollection field);
+
+        public List<Token> GetHand
+        {
+            get;
+        }
     }
     class HighScoreDropperPlayer : IPlayer
     {
+        int continuesTimesPassed;
         ListTokenCollection hand;
         public HighScoreDropperPlayer()
         {
+            continuesTimesPassed = 0;
         }
+
+        public List<Token> GetHand => throw new NotImplementedException();
+
         public void AssignHand(ListTokenCollection tokenCollection)
         {
             this.hand.myList = tokenCollection.ToList;
@@ -108,10 +118,15 @@ namespace Dominó
     }
     class RandomPlayer : IPlayer
     {
+        int continuesTimesPassed;
         ListTokenCollection hand;
         public RandomPlayer()
         {
+            continuesTimesPassed = 0;
         }
+
+        public List<Token> GetHand => throw new NotImplementedException();
+
         public void AssignHand(ListTokenCollection tokenCollection)
         {
             this.hand.myList = tokenCollection.ToList;
@@ -149,9 +164,14 @@ namespace Dominó
     class SmartPlayer : IPlayer
     {
         ListTokenCollection hand;
+        int continuesTimesPassed;
         public SmartPlayer()
         {
+            int continuesTimesPassed = 0;
         }
+
+        public List<Token> GetHand => throw new NotImplementedException();
+
         public void AssignHand(ListTokenCollection tokenCollection)
         {
             this.hand.myList = tokenCollection.ToList;

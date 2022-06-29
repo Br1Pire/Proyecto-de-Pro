@@ -2,5 +2,6 @@
 
 Game x = new Game(4, 6);
 
-x.Run();
+List<int> r = new List<int>();
+Console.WriteLine(r.Count);
 
