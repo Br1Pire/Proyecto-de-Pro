@@ -6,82 +6,14 @@ using System.Threading.Tasks;
 
 namespace Dominó
 {
-    interface IToken<T>
-    {
-        T LeftElement { get; }
-        T RightElement { get; }
 
-    }
-    interface ITokensCollection<T> where T : IToken<int> //duda de xq tengo q poner IToken<int> y no IToken<T>
-    {
-        T Largest { get; }
-        T Smallest { get; }
-
-        List<T> ToList { get; }
-    }
-    class TupleToken : IToken<int>
-    {
-        (int, int) myToken;
-        public TupleToken(int a, int b)
-        {
-            myToken = (a, b);
-        }
-        public int LeftElement{ get { return myToken.Item1; } }
-        public int RightElement { get { return myToken.Item2; } }
-        public int Total { get { return myToken.Item1 + myToken.Item2; } }
-    }
-    class ListTokenCollection : ITokensCollection<TupleToken>
-    {
-        public List<TupleToken> myList;
-
-        public ListTokenCollection(List<TupleToken> list)
-        {
-            myList = list;
-        }
-
-        public TupleToken Largest
-        {
-            get
-            {
-                int highest = -1;
-                int j = 0;
-
-                for (int i = 0; i < myList.Count; i++)
-                {
-                    if (myList[i].Total > highest)
-                    {
-                        highest = myList[i].Total;
-                        j = i;
-                    }
-                }
-                return myList[j];
-            }
-        }
-        public TupleToken Smallest
-        {
-            get
-            {
-                int lowest = int.MaxValue;
-                int j = 0;
-
-                for (int i = 0; i < myList.Count; i++)
-                {
-                    if (myList[i].Total < lowest)
-                    {
-                        lowest = myList[i].Total;
-                        j = i;
-                    }
-                }
-
-                return myList[j];
-            }
-        }
-        public List<TupleToken> ToList { get { return myList; } }
-    }
     interface IPlayer
     {
-        public void AssignHand(ListTokenCollection tokenCollection);
-        void Play(TupleToken tokenAvailable, ListTokenCollection field);
+        public int GetContinuesTimesPassed
+        {
+            get;
+        }
+        void Play(Token tokenAvailable, List<Token> field);
 
         public List<Token> GetHand
         {
@@ -91,21 +23,34 @@ namespace Dominó
     class HighScoreDropperPlayer : IPlayer
     {
         int continuesTimesPassed;
-        ListTokenCollection hand;
+        List<Token> hand;
+        public void AssignToken(Token token)
+        {
+            hand.Add(token);
+        } 
+        public List<Token> GetHand
+        {
+            get { return hand; }
+        }
+
+        public int GetContinuesTimesPassed
+        {
+            get { return continuesTimesPassed;}
+        }
+
         public HighScoreDropperPlayer()
         {
             continuesTimesPassed = 0;
+            hand = new List<Token>();
         }
 
-        public List<Token> GetHand => throw new NotImplementedException();
+        public void Play(Token tokenAvailable, List<Token> field)
+        {
+            Token tokenToPlay;
+            foreach (Token token in hand)
+            {
 
-        public void AssignHand(ListTokenCollection tokenCollection)
-        {
-            this.hand.myList = tokenCollection.ToList;
-        }
-        public void Play(TupleToken tokenAvailable, ListTokenCollection field)
-        {
-            TupleToken tokenToPlay = hand.Largest;
+            }
             hand.myList.IndexOf(tokenToPlay);
             int indexToRemove = hand.myList.IndexOf(tokenToPlay);
             if (tokenToPlay.LeftElement == tokenAvailable.LeftElement)
