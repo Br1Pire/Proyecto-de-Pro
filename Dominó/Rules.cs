@@ -12,7 +12,7 @@ namespace Dominó
     public interface TokenAmountGenerator
     {
         public List<Token> GenerateTokens();
-        
+
 
     }
 
@@ -109,7 +109,7 @@ namespace Dominó
 
     }
 
-    class GetRandomFirstPlayer : TurnOrderSelector
+    public class GetRandomFirstPlayer : TurnOrderSelector
     {
         public void GetTurnOrder(List<IPlayer> players)
         {
@@ -132,7 +132,7 @@ namespace Dominó
         }
     }
 
-    class GetAllPLayersRandom : TurnOrderSelector
+    public class GetAllPLayersRandom : TurnOrderSelector
     {
         public void GetTurnOrder(List<IPlayer> players)
         {
@@ -141,7 +141,7 @@ namespace Dominó
             Random x = new Random();
             Random y = new Random(x.Next());
 
-            
+
             while (players.Count > 0)
             {
                 int index = y.Next(players.Count);
@@ -162,15 +162,15 @@ namespace Dominó
         public void DistributeTokens(List<Token> tokens, List<IPlayer> players);
     }
 
-    class RadomTokenDistributor : TokensDistributor
+    public class RadomTokenDistributor : TokensDistributor
     {
         public void DistributeTokens(List<Token> tokens, List<IPlayer> players)
         {
-            List<Token> aux= ((Token[])tokens.ToArray().Clone()).ToList();
+            List<Token> aux = ((Token[])tokens.ToArray().Clone()).ToList();
 
             Random x = new Random();
             Random y = new Random(x.Next());
-            int maxAmountTokens = tokens[tokens.Count - 1].Higher()+1;
+            int maxAmountTokens = tokens[tokens.Count - 1].Higher() + 1;
 
             for (int i = 0; i < players.Count; i++)
             {
@@ -184,7 +184,7 @@ namespace Dominó
         }
     }
 
-    class SelectedTokenDistributor : TokensDistributor //hay q implementar
+    public class SelectedTokenDistributor : TokensDistributor //hay q implementar
     {
         public void DistributeTokens(List<Token> tokens, List<IPlayer> players)
         {
@@ -201,7 +201,7 @@ namespace Dominó
 
     }
 
-    class CommonEnd : GameEnder
+    public class CommonEnd : GameEnder
     {
         public int CheckIfTheGameIsOver(List<IPlayer> players)
         {
@@ -210,11 +210,11 @@ namespace Dominó
             for (int i = 0; i < players.Count; i++)
             {
                 if (players[i].GetHand.Count() == 0) return i + 1;
-                if (players[i].GetContinuesTimesPassed >0 ) count++;
+                if (players[i].GetContinuesTimesPassed > 0) count++;
             }
             if (count == players.Count - 1)
             {
-                int index= 0;
+                int index = 0;
                 int memory = int.MinValue;
                 for (int i = 0; i < players.Count; i++)
                 {
@@ -229,17 +229,17 @@ namespace Dominó
                         index = i;
                     }
                 }
-                return index+1;
+                return index + 1;
             }
             return 0;
         }
     }
 
-    class ExpelEnd : GameEnder
+    public class ExpelEnd : GameEnder
     {
         public int CheckIfTheGameIsOver(List<IPlayer> players)
         {
-            if(players.Count == 1) return 1;
+            if (players.Count == 1) return 1;
             for (int i = 0; i < players.Count; i++)
             {
                 if (players[i].GetContinuesTimesPassed == 2) players.RemoveAt(i);
@@ -273,7 +273,7 @@ namespace Dominó
             return 0;
 
         }
-       
+
     }
     #endregion
 
