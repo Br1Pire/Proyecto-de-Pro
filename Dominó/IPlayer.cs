@@ -7,9 +7,13 @@ using System.Threading.Tasks;
 namespace Dominó
 {
 
-    interface IPlayer
+    public interface IPlayer
     {
         public int GetContinuesTimesPassed
+        {
+            get;
+        }
+        public int GetPlayerNumber
         {
             get;
         }
@@ -23,6 +27,12 @@ namespace Dominó
     {
         int continuesTimesPassed;
         List<Token> hand;
+        int playerNumber;
+
+        public int GetPlayerNumber
+        {
+            get { return playerNumber; }
+        }
 
         public void AssignToken(Token token)
         {
@@ -36,10 +46,13 @@ namespace Dominó
         {
             get { return continuesTimesPassed; }
         }
-        public HighScoreDropperPlayer()
+        public HighScoreDropperPlayer(int number)
         {
+
+            playerNumber = number;
             continuesTimesPassed = 0;
             hand = new List<Token>();
+
         }
         public static void SortHand(List<Token> hand)
         {
@@ -91,6 +104,19 @@ namespace Dominó
     {
         int continuesTimesPassed;
         List<Token> hand;
+        int playerNumber;
+
+        public int GetPlayerNumber
+        {
+            get { return playerNumber; }
+        }
+
+        public RandomPlayer(int number)
+        {
+            playerNumber = number;
+            continuesTimesPassed = 0;
+            hand = new List<Token>();
+        }
 
         public void AssignToken(Token token)
         {
@@ -150,6 +176,12 @@ namespace Dominó
     {
         int continuesTimesPassed;
         List<Token> hand;
+        int playerNumber;
+
+        public int GetPlayerNumber
+        {
+            get { return playerNumber; }
+        }
 
         public void AssignToken(Token token)
         {
@@ -163,8 +195,9 @@ namespace Dominó
         {
             get { return continuesTimesPassed; }
         }
-        public LowScoreDropperPlayer()
+        public LowScoreDropperPlayer(int number)
         {
+            playerNumber = number;
             continuesTimesPassed = 0;
             hand = new List<Token>();
         }

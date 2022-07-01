@@ -73,7 +73,7 @@ namespace Dominó
         
     }
 
-    class Animal
+     public class Animal
     {
         string name;
 
@@ -87,9 +87,14 @@ namespace Dominó
             if (this.name == ((Animal)x).name) return true;
             return false;
         }
+
+        public override string ToString()
+        {
+            return name;
+        }
     }
 
-    class AnimalToken : Token
+     public class AnimalToken : Token
     {
         int leftBack;
         int rightBack;
@@ -97,7 +102,8 @@ namespace Dominó
 
         public AnimalToken(int leftBack, int rightBack) : base(leftBack, rightBack)
         {
-
+            this.leftBack = leftBack;
+            this.rightBack = rightBack;
             guide = new Animal[] { new Animal("Lion"), new Animal("Snake"), new Animal("Dog"), new Animal("Cat"), new Animal("Elephant"), new Animal("Mouse"), new Animal("Ant"), new Animal("Falcon"), new Animal("Duck"), new Animal("Worm") };
         }
 
@@ -132,7 +138,7 @@ namespace Dominó
 
         public override string ToString()
         {
-            return "[ " + LeftElement + " | " + RightElement + " ]";
+            return "[ " + LeftElement.ToString() + " | " + RightElement.ToString() + " ]";
         }
 
     }

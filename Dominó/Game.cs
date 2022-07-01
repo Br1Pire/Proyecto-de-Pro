@@ -7,13 +7,13 @@ namespace Dominó
     //    public int leftItem;
     //    public int rightItem;
     //    public int score;
-        
+
 
     //    public Token(int leftItem, int rightItem)
     //    {
     //        this.leftItem = leftItem;
     //        this.rightItem = rightItem;
-            
+
     //        this.score = leftItem + rightItem;
     //    }
 
@@ -29,9 +29,9 @@ namespace Dominó
     //        else return leftItem;
     //    }
 
-        
 
-        
+
+
     //    public bool Contain(int x)
     //    {
     //        return leftItem == x|| rightItem==x;
@@ -48,10 +48,10 @@ namespace Dominó
     //    {
     //        return "[ " + leftItem + " | " + rightItem + " ]";
     //    }
-        
+
     //}
 
-    public class Game
+    public class Gamee
     {
         List<int> players = new List<int>();
         List<Token> tokens = new List<Token>();
@@ -60,9 +60,9 @@ namespace Dominó
         Token lastPLayed;
         int turn;
         int amountOfTokensPerPlayer;
-        int timesPassed=0;
+        int timesPassed = 0;
 
-        public Game(int players, int maxToken)
+        public Gamee(int players, int maxToken)
         {
             for (int i = 1; i <= players; i++)
             {
@@ -71,8 +71,8 @@ namespace Dominó
             }
             GenerateTokens(maxToken);
             GetPlayersTurnsRandom();
-            this.amountOfTokensPerPlayer = maxToken+1;
-           // AssignTokens();
+            this.amountOfTokensPerPlayer = maxToken + 1;
+            // AssignTokens();
         }
 
         //public void Run()
@@ -100,7 +100,7 @@ namespace Dominó
         {
             Random y = new Random();
             Random x = new Random(y.Next());
-           turn= x.Next(1,players.Count+1);
+            turn = x.Next(1, players.Count + 1);
         }
 
         public void GenerateTokens(int max)
@@ -139,69 +139,69 @@ namespace Dominó
         //    }
         //}
 
-       /* public void Play()
-        {
-            
-            if (table.Count == 0)
-            {
-                table.Add(playersHands[turn - 1][0]);
-                lastPLayed = playersHands[turn - 1][0];
-                playersHands[turn - 1].RemoveAt(0);
-                return;
-            }
-            for (int i = 0; i < playersHands[turn - 1].Count; i++)
-            {
-                if (playersHands[turn - 1][i].Contain(table[0].leftItem))
-                {
-                    if (playersHands[turn - 1][i].rightItem == table[0].leftItem)
-                    {
-                        timesPassed = 0;
-                        table.Insert(0, playersHands[turn - 1][i]);
-                        lastPLayed=playersHands[turn - 1][i];
-                        playersHands[turn - 1].RemoveAt(i);
+        /* public void Play()
+         {
 
-                        return;
-                    }
-                    else
-                    {
-                        timesPassed = 0;
-                        playersHands[turn - 1][i].Rotate();
-                        table.Insert(0, playersHands[turn - 1][i]);
-                        lastPLayed = playersHands[turn - 1][i];
-                        playersHands[turn - 1].RemoveAt(i);
+             if (table.Count == 0)
+             {
+                 table.Add(playersHands[turn - 1][0]);
+                 lastPLayed = playersHands[turn - 1][0];
+                 playersHands[turn - 1].RemoveAt(0);
+                 return;
+             }
+             for (int i = 0; i < playersHands[turn - 1].Count; i++)
+             {
+                 if (playersHands[turn - 1][i].Contain(table[0].leftItem))
+                 {
+                     if (playersHands[turn - 1][i].rightItem == table[0].leftItem)
+                     {
+                         timesPassed = 0;
+                         table.Insert(0, playersHands[turn - 1][i]);
+                         lastPLayed=playersHands[turn - 1][i];
+                         playersHands[turn - 1].RemoveAt(i);
 
-                        return;
-                    }
-                }
+                         return;
+                     }
+                     else
+                     {
+                         timesPassed = 0;
+                         playersHands[turn - 1][i].Rotate();
+                         table.Insert(0, playersHands[turn - 1][i]);
+                         lastPLayed = playersHands[turn - 1][i];
+                         playersHands[turn - 1].RemoveAt(i);
 
-                if (playersHands[turn - 1][i].Contain(table[table.Count - 1].rightItem))
-                {
-                    if (playersHands[turn - 1][i].leftItem == table[table.Count - 1].rightItem)
-                    {
-                        timesPassed = 0;
-                        table.Add(playersHands[turn - 1][i]);
-                        lastPLayed = playersHands[turn - 1][i];
-                        playersHands[turn - 1].RemoveAt(i);
+                         return;
+                     }
+                 }
 
-                        return;
-                    }
-                    else
-                    {
-                        timesPassed = 0;
-                        playersHands[turn - 1][i].Rotate();
-                        table.Add(playersHands[turn - 1][i]);
-                        lastPLayed = playersHands[turn - 1][i];
-                        playersHands[turn - 1].RemoveAt(i);
+                 if (playersHands[turn - 1][i].Contain(table[table.Count - 1].rightItem))
+                 {
+                     if (playersHands[turn - 1][i].leftItem == table[table.Count - 1].rightItem)
+                     {
+                         timesPassed = 0;
+                         table.Add(playersHands[turn - 1][i]);
+                         lastPLayed = playersHands[turn - 1][i];
+                         playersHands[turn - 1].RemoveAt(i);
 
-                        return;
-                    }
+                         return;
+                     }
+                     else
+                     {
+                         timesPassed = 0;
+                         playersHands[turn - 1][i].Rotate();
+                         table.Add(playersHands[turn - 1][i]);
+                         lastPLayed = playersHands[turn - 1][i];
+                         playersHands[turn - 1].RemoveAt(i);
 
-                }
-            }
+                         return;
+                     }
 
-            timesPassed++;
+                 }
+             }
 
-        }*/
+             timesPassed++;
+
+         }*/
         #region(Auxiliares de Play)
 
         //public static void SortByHighers(List<Token> playerHand)
@@ -216,11 +216,11 @@ namespace Dominó
         //                Token aux=playerHand[j];
         //                playerHand[j]=playerHand[j+1];
         //                playerHand[j+1]=aux;
-                        
+
         //            }
         //        }
         //    }
-           
+
         //}
 
         #endregion
@@ -232,19 +232,19 @@ namespace Dominó
 
         public int SelectWinner()
         {
-            int index=0;
+            int index = 0;
             int score = int.MaxValue;
             for (int i = 0; i < playersHands.Count; i++)
             {
                 int aux = CalculateHandScore(playersHands[i]);
                 if (aux < score)
                 {
-                    score=aux;
-                    index=i;
+                    score = aux;
+                    index = i;
                 }
             }
 
-            return index+1;
+            return index + 1;
         }
 
         public static int CalculateHandScore(List<Token> hand)
@@ -282,8 +282,70 @@ namespace Dominó
 
         public List<List<Token>> PlayersHands
         {
-            get { return playersHands;}
+            get { return playersHands; }
         }
+
+
+    }
+
+    public class Game
+    {
+        List<IPlayer> players;
+        TokenAmountGenerator tokenGenerator;
+        TurnOrderSelector turnSelector;
+        TokensDistributor tokenDistributor;
+        GameEnder gameEnder;
+        List<Token> allTokens;
+        List<Token> Table;
+        Token lastTokenPlayed;
+        int turn;
+
+        public Game(TokenAmountGenerator tokenGenerator, TurnOrderSelector turnSelector, TokensDistributor tokenDistributor, GameEnder gameEnder, List<IPlayer> players)
+        {
+            this.players = players;
+            this.tokenGenerator = tokenGenerator;
+            this.turnSelector = turnSelector;
+            this.tokenDistributor = tokenDistributor;
+            this.gameEnder = gameEnder;
+            this.Table = new List<Token>();
+            turn = 0;
+            lastTokenPlayed = null;
+            allTokens = tokenGenerator.GenerateTokens();
+            turnSelector.GetTurnOrder(players);
+            tokenDistributor.DistributeTokens(allTokens, players);
+        }
+
+        public string Run()
+        {
+
+            if (turn == players.Count) turn = 0;
+            int endGame = gameEnder.CheckIfTheGameIsOver(players);
+            if (endGame > 0)
+            {
+                return "El Jugador " + endGame + " ha ganado";
+            }
+            players[turn].Play(ObtainAvailablePlayToken(), Table);
+
+            return ("Turno del Jugador " + players[turn].GetPlayerNumber + "\n" + " \n"+"Tablero: "+TableStatus());
+
+
+        }
+
+        public Token ObtainAvailablePlayToken()
+        {
+            return new Token(Table[0].RightBack, Table[Table.Count].LeftBack);
+        }
+
+        public string TableStatus()
+        {
+            string ret = "";
+            for (int i = 0; i < Table.Count; i++)
+            {
+                ret += Table[i].ToString();
+            }
+            return ret;
+        }
+
 
 
     }
