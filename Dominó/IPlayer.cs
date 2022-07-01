@@ -74,7 +74,7 @@ namespace Dominó
         public Token Play(List<Token> field)
         {
             SortHand(hand);
-            if (field.Count == 0) return null;
+            if (field.Count == 0)return field[0];
             foreach (Token token in hand)
             {
                 if (token.LeftBack == field[field.Count - 1].RightBack || token.RightBack == field[field.Count - 1].RightBack)
@@ -133,7 +133,12 @@ namespace Dominó
         }
         public Token Play(List<Token> field)
         {
-            if (field.Count == 0) return null;
+            if (field.Count == 0)
+            {
+                Random x =new Random();
+                int position = x.Next(hand.Count - 1);
+                return hand[position];
+            }
             Token tokenToplay = null;
             List<Token> possibleTokens = new List<Token>();
             List<int> indexesToRemove = new List<int>();
@@ -223,8 +228,8 @@ namespace Dominó
         }
         public Token Play(List<Token> field)
         {
-            if (field.Count == 0) return null;
             SortHand(hand);
+            if (field.Count == 0) return field[0];
             foreach (Token token in hand)
             {
                 if (token.LeftBack == field[field.Count - 1].RightBack || token.RightBack == field[field.Count - 1].RightBack)
