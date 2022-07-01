@@ -9,14 +9,14 @@ namespace Dominó
 {
 
     #region(Generadores de Fichas)
-    interface TokenAmountGenerator
+    public interface TokenAmountGenerator
     {
         public List<Token> GenerateTokens();
         
 
     }
 
-    class DoubleSixInToken : TokenAmountGenerator
+    public class DoubleSixInToken : TokenAmountGenerator
     {
 
 
@@ -103,7 +103,7 @@ namespace Dominó
     #endregion
 
     #region(Selector de Turnos)
-    interface TurnOrderSelector
+    public interface TurnOrderSelector
     {
         public void GetTurnOrder(List<IPlayer> players);
 
@@ -157,14 +157,14 @@ namespace Dominó
     #endregion
 
     #region(Repartidor de tokens)
-    interface TokensDistributor
+    public interface TokensDistributor
     {
-        public void DistributeTokens(List<Token> tokens, List<List<Token>> playerHands);
+        public void DistributeTokens(List<Token> tokens, List<IPlayer> players);
     }
 
     class RadomTokenDistributor : TokensDistributor
     {
-        public void DistributeTokens(List<Token> tokens, List<List<Token>> playerHands)
+        public void DistributeTokens(List<Token> tokens, List<IPlayer> players)
         {
             List<Token> aux= ((Token[])tokens.ToArray().Clone()).ToList();
 
@@ -172,12 +172,12 @@ namespace Dominó
             Random y = new Random(x.Next());
             int maxAmountTokens = tokens[tokens.Count - 1].Higher()+1;
 
-            for (int i = 0; i < playerHands.Count; i++)
+            for (int i = 0; i < players.Count; i++)
             {
                 for (int j = 0; j < maxAmountTokens; j++)
                 {
                     int index = y.Next(aux.Count);
-                    playerHands[i].Add(aux[index]);
+                    players[i].GetHand.Add(aux[index]);
                     aux.RemoveAt(index);
                 }
             }
@@ -186,19 +186,95 @@ namespace Dominó
 
     class SelectedTokenDistributor : TokensDistributor //hay q implementar
     {
-        public void DistributeTokens(List<Token> tokens, List<List<Token>> playerHands)
+        public void DistributeTokens(List<Token> tokens, List<IPlayer> players)
         {
             throw new NotImplementedException();
         }
     }
     #endregion
 
-    interface GameEnding
+    #region(Finalizacion del juego)
+    public interface GameEnder
     {
-        public bool CheckIfTheGameIsOver(List<IPlayer> players);
+        public int CheckIfTheGameIsOver(List<IPlayer> players);
+
+
     }
 
+    class CommonEnd : GameEnder
+    {
+        public int CheckIfTheGameIsOver(List<IPlayer> players)
+        {
+            int count = 0;
 
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (players[i].GetHand.Count() == 0) return i + 1;
+                if (players[i].GetContinuesTimesPassed >0 ) count++;
+            }
+            if (count == players.Count - 1)
+            {
+                int index= 0;
+                int memory = int.MinValue;
+                for (int i = 0; i < players.Count; i++)
+                {
+                    int sum = 0;
+                    for (int j = 0; j < players[i].GetHand.Count; j++)
+                    {
+                        sum += players[i].GetHand[j].Score;
+                    }
+                    if (sum > memory)
+                    {
+                        memory = sum;
+                        index = i;
+                    }
+                }
+                return index+1;
+            }
+            return 0;
+        }
+    }
 
+    class ExpelEnd : GameEnder
+    {
+        public int CheckIfTheGameIsOver(List<IPlayer> players)
+        {
+            if(players.Count == 1) return 1;
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (players[i].GetContinuesTimesPassed == 2) players.RemoveAt(i);
+            }
+            int count = 0;
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (players[i].GetHand.Count() == 0) return i + 1;
+                if (players[i].GetContinuesTimesPassed > 0) count++;
+            }
+            if (count == players.Count - 1)
+            {
+                int index = 0;
+                int memory = int.MinValue;
+                for (int i = 0; i < players.Count; i++)
+                {
+                    int sum = 0;
+                    for (int j = 0; j < players[i].GetHand.Count; j++)
+                    {
+                        sum += players[i].GetHand[j].Score;
+                    }
+                    if (sum > memory)
+                    {
+                        memory = sum;
+                        index = i;
+                    }
+                }
+                return index + 1;
+            }
+            return 0;
+
+        }
+       
+    }
+    #endregion
 
 }
