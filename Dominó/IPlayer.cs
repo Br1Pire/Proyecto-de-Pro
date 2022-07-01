@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Dominó
 {
 
-    interface IPlayer
+   public interface IPlayer
     {
         public int GetContinuesTimesPassed
         {
@@ -23,7 +23,7 @@ namespace Dominó
             get;
         }
     }
-    class HighScoreDropperPlayer : IPlayer
+   public class HighScoreDropperPlayer : IPlayer
     {
         int continuesTimesPassed;
         List<Token> hand;
@@ -100,7 +100,7 @@ namespace Dominó
             return null;
         }
     }
-    class RandomPlayer : IPlayer
+   public class RandomPlayer : IPlayer
     {
         int continuesTimesPassed;
         List<Token> hand;
@@ -173,7 +173,7 @@ namespace Dominó
             return null;
         }
     }
-    class LowScoreDropperPlayer : IPlayer
+   public class LowScoreDropperPlayer : IPlayer
     {
         int continuesTimesPassed;
         List<Token> hand;
