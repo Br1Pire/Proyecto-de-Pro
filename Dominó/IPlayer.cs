@@ -13,6 +13,10 @@ namespace Dominó
         {
             get;
         }
+        public int GetPlayerNumber
+        {
+            get;
+        }
         Token Play(List<Token> field);
         public List<Token> GetHand
         {
@@ -23,7 +27,11 @@ namespace Dominó
     {
         int continuesTimesPassed;
         List<Token> hand;
-
+        int playerNumber;
+        public int GetPlayerNumber
+        {
+            get { return playerNumber; }
+        }
         public void AssignToken(Token token)
         {
             hand.Add(token);
@@ -36,10 +44,11 @@ namespace Dominó
         {
             get { return continuesTimesPassed; }
         }
-        public HighScoreDropperPlayer()
+        public HighScoreDropperPlayer(int playerNumber)
         {
             continuesTimesPassed = 0;
             hand = new List<Token>();
+            this.playerNumber = playerNumber;
         }
         public static void SortHand(List<Token> hand)
         {
@@ -65,15 +74,15 @@ namespace Dominó
         public Token Play(List<Token> field)
         {
             SortHand(hand);
-            if (field.Count == 0) return null; 
+            if (field.Count == 0) return null;
             foreach (Token token in hand)
             {
-                if (token.LeftBack == field[field.Count-1].RightBack || token.RightBack == field[field.Count - 1].RightBack)
+                if (token.LeftBack == field[field.Count - 1].RightBack || token.RightBack == field[field.Count - 1].RightBack)
                 {
                     if (token.RightBack == field[field.Count - 1].RightBack) token.Rotate();
                     int indexToRemove = hand.IndexOf(token);
                     field.Add(token);
-                    Token returner = token; 
+                    Token returner = token;
                     hand.RemoveAt(indexToRemove);
                     return returner;
                 }
@@ -95,7 +104,11 @@ namespace Dominó
     {
         int continuesTimesPassed;
         List<Token> hand;
-
+        int playerNumber;
+        public int GetPlayerNumber
+        {
+            get { return playerNumber; }
+        }
         public void AssignToken(Token token)
         {
             hand.Add(token);
@@ -108,11 +121,17 @@ namespace Dominó
         {
             get { return continuesTimesPassed; }
         }
+        public RandomPlayer(int playerNumber)
+        {
+            continuesTimesPassed = 0;
+            hand = new List<Token>();
+            this.playerNumber = playerNumber;
+        }
         public void TurnsPassed()
         {
             continuesTimesPassed++;
         }
-        public Token Play( List<Token> field)
+        public Token Play(List<Token> field)
         {
             if (field.Count == 0) return null;
             Token tokenToplay = null;
@@ -120,7 +139,7 @@ namespace Dominó
             List<int> indexesToRemove = new List<int>();
             for (int i = 0; i < hand.Count; i++)
             {
-                if (hand[i].LeftBack == field[0].LeftBack || hand[i].LeftBack == field[field.Count-1].RightBack)
+                if (hand[i].LeftBack == field[0].LeftBack || hand[i].LeftBack == field[field.Count - 1].RightBack)
                 {
                     possibleTokens.Add(hand[i]);
                     indexesToRemove.Add(i);
@@ -158,7 +177,11 @@ namespace Dominó
     {
         int continuesTimesPassed;
         List<Token> hand;
-
+        int playerNumber;
+        public int GetPlayerNumber
+        {
+            get { return playerNumber; }
+        }
         public void AssignToken(Token token)
         {
             hand.Add(token);
@@ -171,10 +194,11 @@ namespace Dominó
         {
             get { return continuesTimesPassed; }
         }
-        public LowScoreDropperPlayer()
+        public LowScoreDropperPlayer(int playerNumber)
         {
             continuesTimesPassed = 0;
             hand = new List<Token>();
+            this.playerNumber = playerNumber;
         }
         public static void SortHand(List<Token> hand)
         {
@@ -203,7 +227,7 @@ namespace Dominó
             SortHand(hand);
             foreach (Token token in hand)
             {
-                if (token.LeftBack == field[field.Count-1].RightBack || token.RightBack == field[field.Count - 1].RightBack)
+                if (token.LeftBack == field[field.Count - 1].RightBack || token.RightBack == field[field.Count - 1].RightBack)
                 {
                     if (token.RightBack == field[field.Count - 1].RightBack) token.Rotate();
                     int indexToRemove = hand.IndexOf(token);
