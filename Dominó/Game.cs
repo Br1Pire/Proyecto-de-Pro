@@ -317,16 +317,17 @@ namespace Dominó
 
         public string Run()
         {
-
+            string ret = "";
             if (turn == players.Count) turn = 0;
             int endGame = gameEnder.CheckIfTheGameIsOver(players);
             if (endGame > 0)
             {
                 return "El Jugador " + endGame + " ha ganado";
             }
-            players[turn].Play(ObtainAvailablePlayToken(), Table);
-
-            return ("Turno del Jugador " + players[turn].GetPlayerNumber + "\n" + " \n"+"Tablero: "+TableStatus());
+            lastTokenPlayed = players[turn].Play(ObtainAvailablePlayToken(), Table);
+            if (lastTokenPlayed == null) ret = "Turno del Jugador " + players[turn].GetPlayerNumber + "\n" + "El Jugador se ha pasado " + " \n" + "Tablero: " + TableStatus();
+            else ret = "Turno del Jugador " + players[turn].GetPlayerNumber + "\n" + "El Jugador ha jugado " + lastTokenPlayed + " \n" + "Tablero: " + TableStatus();
+            return ("Turno del Jugador " + players[turn].GetPlayerNumber + "\n" + " \n" + "Tablero: " + TableStatus());
 
 
         }
