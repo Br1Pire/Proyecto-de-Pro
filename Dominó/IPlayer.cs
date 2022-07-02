@@ -53,9 +53,9 @@ namespace Dominó
         }
         public static void SortHand(List<Token> hand)
         {
-            for (int i = 0; i < hand.Count; i++)
+            for (int i = 0; i < hand.Count - 1; i++)
             {
-                for (int j = i + 1; j < hand.Count - 1; j++)
+                for (int j = i + 1; j < hand.Count; j++)
                 {
                     Token temp;
                     if (hand[i].Score < hand[j].Score)
@@ -219,7 +219,7 @@ namespace Dominó
         }
         public static void SortHand(List<Token> hand)
         {
-            for (int i = 0; i < hand.Count; i++)
+            for (int i = 0; i < hand.Count - 1; i++)
             {
                 for (int j = i + 1; j < hand.Count; j++)
                 {
