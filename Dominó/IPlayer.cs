@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Dominó
 {
 
-   public interface IPlayer
+    public interface IPlayer
     {
         public int GetContinuesTimesPassed
         {
@@ -23,7 +23,7 @@ namespace Dominó
             get;
         }
     }
-   public class HighScoreDropperPlayer : IPlayer
+    public class HighScoreDropperPlayer : IPlayer
     {
         int continuesTimesPassed;
         List<Token> hand;
@@ -32,23 +32,23 @@ namespace Dominó
         {
             get { return playerNumber; }
         }
-        public void AssignToken(Token token)
+        public int GetContinuesTimesPassed
         {
-            hand.Add(token);
+            get { return continuesTimesPassed; }
         }
         public List<Token> GetHand
         {
             get { return hand; }
-        }
-        public int GetContinuesTimesPassed
-        {
-            get { return continuesTimesPassed; }
         }
         public HighScoreDropperPlayer(int playerNumber)
         {
             continuesTimesPassed = 0;
             hand = new List<Token>();
             this.playerNumber = playerNumber;
+        }
+        public void AssignToken(Token token)
+        {
+            hand.Add(token);
         }
         public static void SortHand(List<Token> hand)
         {
@@ -74,7 +74,13 @@ namespace Dominó
         public Token Play(List<Token> field)
         {
             SortHand(hand);
-            if (field.Count == 0)return hand[0];
+            if (field.Count == 0)
+            {
+                field.Add(hand[0]);
+                Token returner = hand[0];
+                hand.RemoveAt(0);
+                return returner;
+            }
             foreach (Token token in hand)
             {
                 if (token.LeftBack == field[field.Count - 1].RightBack || token.RightBack == field[field.Count - 1].RightBack)
@@ -100,7 +106,7 @@ namespace Dominó
             return null;
         }
     }
-   public class RandomPlayer : IPlayer
+    public class RandomPlayer : IPlayer
     {
         int continuesTimesPassed;
         List<Token> hand;
@@ -109,23 +115,23 @@ namespace Dominó
         {
             get { return playerNumber; }
         }
-        public void AssignToken(Token token)
+        public int GetContinuesTimesPassed
         {
-            hand.Add(token);
+            get { return continuesTimesPassed; }
         }
         public List<Token> GetHand
         {
             get { return hand; }
-        }
-        public int GetContinuesTimesPassed
-        {
-            get { return continuesTimesPassed; }
         }
         public RandomPlayer(int playerNumber)
         {
             continuesTimesPassed = 0;
             hand = new List<Token>();
             this.playerNumber = playerNumber;
+        }
+        public void AssignToken(Token token)
+        {
+            hand.Add(token);
         }
         public void TurnsPassed()
         {
@@ -135,9 +141,12 @@ namespace Dominó
         {
             if (field.Count == 0)
             {
-                Random x =new Random();
+                Random x = new Random();
                 int position = x.Next(hand.Count - 1);
-                return hand[position];
+                field.Add(hand[position]);
+                Token returner = hand[position];
+                hand.RemoveAt(position);
+                return returner;
             }
             Token tokenToplay = null;
             List<Token> possibleTokens = new List<Token>();
@@ -178,7 +187,7 @@ namespace Dominó
             return null;
         }
     }
-   public class LowScoreDropperPlayer : IPlayer
+    public class LowScoreDropperPlayer : IPlayer
     {
         int continuesTimesPassed;
         List<Token> hand;
@@ -187,23 +196,23 @@ namespace Dominó
         {
             get { return playerNumber; }
         }
-        public void AssignToken(Token token)
+        public int GetContinuesTimesPassed
         {
-            hand.Add(token);
+            get { return continuesTimesPassed; }
         }
         public List<Token> GetHand
         {
             get { return hand; }
-        }
-        public int GetContinuesTimesPassed
-        {
-            get { return continuesTimesPassed; }
         }
         public LowScoreDropperPlayer(int playerNumber)
         {
             continuesTimesPassed = 0;
             hand = new List<Token>();
             this.playerNumber = playerNumber;
+        }
+        public void AssignToken(Token token)
+        {
+            hand.Add(token);
         }
         public static void SortHand(List<Token> hand)
         {
@@ -229,7 +238,13 @@ namespace Dominó
         public Token Play(List<Token> field)
         {
             SortHand(hand);
-            if (field.Count == 0) return hand[0];
+            if (field.Count == 0)
+            {
+                field.Add(hand[0]);
+                Token returner = hand[0];
+                hand.RemoveAt(0);
+                return returner;
+            }
             foreach (Token token in hand)
             {
                 if (token.LeftBack == field[field.Count - 1].RightBack || token.RightBack == field[field.Count - 1].RightBack)
