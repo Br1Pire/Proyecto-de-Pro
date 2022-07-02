@@ -74,7 +74,7 @@ namespace Dominó
         public Token Play(List<Token> field)
         {
             SortHand(hand);
-            if (field.Count == 0)return field[0];
+            if (field.Count == 0)return hand[0];
             foreach (Token token in hand)
             {
                 if (token.LeftBack == field[field.Count - 1].RightBack || token.RightBack == field[field.Count - 1].RightBack)
@@ -229,7 +229,7 @@ namespace Dominó
         public Token Play(List<Token> field)
         {
             SortHand(hand);
-            if (field.Count == 0) return field[0];
+            if (field.Count == 0) return hand[0];
             foreach (Token token in hand)
             {
                 if (token.LeftBack == field[field.Count - 1].RightBack || token.RightBack == field[field.Count - 1].RightBack)
