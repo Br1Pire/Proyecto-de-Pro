@@ -55,7 +55,7 @@ namespace Dominó
         {
             for (int i = 0; i < hand.Count; i++)
             {
-                for (int j = 0; j < hand.Count; j++)
+                for (int j = i + 1; j < hand.Count - 1; j++)
                 {
                     Token temp;
                     if (hand[i].Score < hand[j].Score)
@@ -221,7 +221,7 @@ namespace Dominó
         {
             for (int i = 0; i < hand.Count; i++)
             {
-                for (int j = 0; j < hand.Count; j++)
+                for (int j = i + 1; j < hand.Count; j++)
                 {
                     Token temp;
                     if (hand[i].Score > hand[j].Score)
