@@ -28,6 +28,7 @@ namespace Dominó
         int continuesTimesPassed;
         List<Token> hand;
         int playerNumber;
+
         public int GetPlayerNumber
         {
             get { return playerNumber; }
@@ -111,6 +112,7 @@ namespace Dominó
         int continuesTimesPassed;
         List<Token> hand;
         int playerNumber;
+
         public int GetPlayerNumber
         {
             get { return playerNumber; }
@@ -192,6 +194,7 @@ namespace Dominó
         int continuesTimesPassed;
         List<Token> hand;
         int playerNumber;
+
         public int GetPlayerNumber
         {
             get { return playerNumber; }
