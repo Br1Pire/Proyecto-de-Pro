@@ -21,11 +21,11 @@ namespace Dominó
 
         public int LeftBack
         {
-            get;
+            get { return leftBack; }
         }
         public int RightBack
         {
-            get;
+            get { return rightBack; }
         }
 
         public int Score
