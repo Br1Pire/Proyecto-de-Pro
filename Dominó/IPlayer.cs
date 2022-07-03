@@ -94,6 +94,7 @@ namespace Dominó
                     field.Add(token);
                     Token returner = token;
                     hand.RemoveAt(indexToRemove);
+                    continuesTimesPassed = 0;
                     return returner;
                 }
                 else if (token.RightBack == field[0].LeftBack || token.LeftBack == field[0].LeftBack)
@@ -103,6 +104,7 @@ namespace Dominó
                     field.Insert(0, token);
                     Token returner = token;
                     hand.RemoveAt(indexToRemove);
+                    continuesTimesPassed = 0;
                     return returner;
                 }
             }
@@ -147,7 +149,7 @@ namespace Dominó
             if (field.Count == 0)
             {
                 Random x = new Random();
-                int position = x.Next(hand.Count - 1);
+                int position = x.Next(hand.Count);
                 field.Add(hand[position]);
                 Token returner = hand[position];
                 hand.RemoveAt(position);
@@ -170,7 +172,7 @@ namespace Dominó
                 }
             }
             Random random = new Random();
-            int randomIndex = random.Next(possibleTokens.Count - 1);
+            int randomIndex = random.Next(possibleTokens.Count);
             tokenToplay = possibleTokens[randomIndex];
             if (tokenToplay.LeftBack == field[field.Count - 1].RightBack || tokenToplay.RightBack == field[field.Count - 1].RightBack)
             {
@@ -178,6 +180,7 @@ namespace Dominó
                 field.Add(tokenToplay);
                 Token returner = tokenToplay;
                 hand.RemoveAt(randomIndex);
+                continuesTimesPassed = 0;
                 return returner;
             }
             else if (tokenToplay.RightBack == field[0].LeftBack || tokenToplay.LeftBack == field[0].LeftBack)
@@ -186,6 +189,7 @@ namespace Dominó
                 field.Insert(0, tokenToplay);
                 Token returner = tokenToplay;
                 hand.RemoveAt(randomIndex);
+                continuesTimesPassed = 0;
                 return returner;
             }
             TurnsPassed();
@@ -260,6 +264,7 @@ namespace Dominó
                     field.Add(token);
                     Token returner = token;
                     hand.RemoveAt(indexToRemove);
+                    continuesTimesPassed = 0;
                     return returner;
                 }
                 else if (token.RightBack == field[0].LeftBack || token.LeftBack == field[0].LeftBack)
@@ -269,6 +274,7 @@ namespace Dominó
                     field.Insert(0, token);
                     Token returner = token;
                     hand.RemoveAt(indexToRemove);
+                    continuesTimesPassed = 0;
                     return returner;
                 }
             }

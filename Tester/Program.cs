@@ -118,7 +118,7 @@ namespace ConsoleInterface
 
 
             int tokenType = FancySelector("Seleccione el tipo de Ficha que desea usar", new string[] { "=>Ficha Común     Ficha Animal", "  Ficha Común   =>Ficha Animal" });
-            TokenAmountGenerator generator=null;
+            TokenAmountGenerator generator = null;
 
             if (tokenType == 0)
             {
@@ -154,7 +154,7 @@ namespace ConsoleInterface
             }
 
             stateSelector = FancySelector("Seleccione el método para asignar los turnos", new string[] { "=>Primer jugador Random     Todos los jugadores Random", "  Primer jugador Random   =>Todos los jugadores Random" });
-            TurnOrderSelector turnSelector=null;
+            TurnOrderSelector turnSelector = null;
             switch (stateSelector)
             {
                 case 0:
@@ -167,7 +167,7 @@ namespace ConsoleInterface
             }
 
             stateSelector = FancySelector("Seleccione la manera de repartir las fichas", new string[] { "=>Random     Por Seleccion", "  Random   =>Por Seleccion" });
-            TokensDistributor tokensDistributor=null;
+            TokensDistributor tokensDistributor = null;
             switch (stateSelector)
             {
                 case 0:
@@ -180,7 +180,7 @@ namespace ConsoleInterface
             }
 
             stateSelector = FancySelector("Seleccione commo desea que finalice cada partida", new string[] { "=>Común     Por expulsion", "  Común   =>Por expulsion" });
-            GameEnder gameEnder=null;
+            GameEnder gameEnder = null;
             switch (stateSelector)
             {
                 case 0:
@@ -198,14 +198,11 @@ namespace ConsoleInterface
 
             Game game = new Game(generator, turnSelector, tokensDistributor, gameEnder, players);
 
-           while (!game.GameOver)
+            while (!game.GameOver)
             {
                 Console.WriteLine(game.Run());
                 Console.ReadLine();
             }
-
-            
-
 
 
 
