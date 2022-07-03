@@ -47,9 +47,6 @@ namespace ConsoleInterface
         }
         static void Main(string[] args)
         {
-           
-
-
             bool process = true;
             int number = 1;
             List<IPlayer> players = new List<IPlayer>();

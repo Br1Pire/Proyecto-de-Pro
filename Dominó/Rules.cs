@@ -215,7 +215,7 @@ namespace Dominó
                 if (players[i].GetHand.Count() == 0) return i + 1;
                 if (players[i].GetContinuesTimesPassed > 0) count++;
             }
-            if (count == players.Count - 1)
+            if (count == players.Count)
             {
                 int index = 0;
                 int memory = int.MinValue;
