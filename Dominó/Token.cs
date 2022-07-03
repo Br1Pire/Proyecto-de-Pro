@@ -21,11 +21,11 @@ namespace Dominó
 
         public int LeftBack
         {
-            get;
+            get { return leftBack; }
         }
         public int RightBack
         {
-            get;
+            get { return rightBack; }
         }
 
         public int Score
@@ -67,8 +67,7 @@ namespace Dominó
 
     public class InToken : Token
     {
-        int leftBack;
-        int rightBack;
+       
         public  InToken(int leftBack, int rightBack) : base(leftBack, rightBack) { }
         
     }
@@ -107,14 +106,14 @@ namespace Dominó
             guide = new Animal[] { new Animal("Lion"), new Animal("Snake"), new Animal("Dog"), new Animal("Cat"), new Animal("Elephant"), new Animal("Mouse"), new Animal("Ant"), new Animal("Falcon"), new Animal("Duck"), new Animal("Worm") };
         }
 
-        public Animal LeftElement
-        {
-            get { return guide[leftBack]; }
-        }
-        public Animal RightElement
-        {
-            get { return guide[rightBack]; }
-        }
+        //public Animal LeftElement
+        //{
+        //    get { return guide[leftBack]; }
+        //}
+        //public Animal RightElement
+        //{
+        //    get { return guide[rightBack]; }
+        //}
 
 
         public override bool Contains(int value)
@@ -138,7 +137,7 @@ namespace Dominó
 
         public override string ToString()
         {
-            return "[ " + LeftElement.ToString() + " | " + RightElement.ToString() + " ]";
+            return "[ " + guide[LeftBack].ToString() + " | " + guide[RightBack].ToString() + " ]";
         }
 
     }

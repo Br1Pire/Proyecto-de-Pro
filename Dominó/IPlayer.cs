@@ -26,8 +26,15 @@ namespace Dominó
     public class HighScoreDropperPlayer : IPlayer
     {
         int continuesTimesPassed;
-        List<Token> hand;
         int playerNumber;
+        List<Token> hand;
+
+        public HighScoreDropperPlayer(int playerNumber)
+        {
+            continuesTimesPassed = 0;
+            hand = new List<Token>();
+            this.playerNumber = playerNumber;
+        }
 
         public int GetPlayerNumber
         {
@@ -41,12 +48,11 @@ namespace Dominó
         {
             get { return hand; }
         }
-        public HighScoreDropperPlayer(int playerNumber)
+        public void TurnsPassed()
         {
-            continuesTimesPassed = 0;
-            hand = new List<Token>();
-            this.playerNumber = playerNumber;
+            continuesTimesPassed++;
         }
+
         public void AssignToken(Token token)
         {
             hand.Add(token);
@@ -68,10 +74,7 @@ namespace Dominó
 
             }
         }
-        public void TurnsPassed()
-        {
-            continuesTimesPassed++;
-        }
+        
         public Token Play(List<Token> field)
         {
             SortHand(hand);
