@@ -298,6 +298,7 @@ namespace Dominó
         List<Token> allTokens;
         List<Token> Table;
         Token lastTokenPlayed;
+        bool gameOver;
         int turn;
 
         public Game(TokenAmountGenerator tokenGenerator, TurnOrderSelector turnSelector, TokensDistributor tokenDistributor, GameEnder gameEnder, List<IPlayer> players)
@@ -309,6 +310,7 @@ namespace Dominó
             this.gameEnder = gameEnder;
             this.Table = new List<Token>();
             turn = 0;
+            gameOver = false;
             lastTokenPlayed = null;
             allTokens = tokenGenerator.GenerateTokens();
             turnSelector.GetTurnOrder(players);
@@ -322,11 +324,13 @@ namespace Dominó
             int endGame = gameEnder.CheckIfTheGameIsOver(players);
             if (endGame > 0)
             {
+                gameOver = true;
                 return "El Jugador " + endGame + " ha ganado";
             }
             lastTokenPlayed = players[turn].Play( Table);
             if (lastTokenPlayed == null) ret = "Turno del Jugador " + players[turn].GetPlayerNumber + "\n" + "El Jugador se ha pasado " + " \n" + "Tablero: " + TableStatus();
             else ret = "Turno del Jugador " + players[turn].GetPlayerNumber + "\n" + "El Jugador ha jugado " + lastTokenPlayed + " \n" + "Tablero: " + TableStatus();
+            turn++;
             return ret;
 
 
@@ -335,6 +339,11 @@ namespace Dominó
         public Token ObtainAvailablePlayToken()
         {
             return new Token(Table[0].RightBack, Table[Table.Count].LeftBack);
+        }
+
+        public bool GameOver
+        {
+            get{ return gameOver; }
         }
 
         public string TableStatus()

@@ -38,7 +38,7 @@ namespace Dominó
         }
     }
 
-    class DoubleSixAnimalToken : TokenAmountGenerator
+    public class DoubleSixAnimalToken : TokenAmountGenerator
     {
         public List<Token> GenerateTokens()
         {
@@ -58,7 +58,7 @@ namespace Dominó
         }
     }
 
-    class DoubleNineInToken : TokenAmountGenerator
+   public class DoubleNineInToken : TokenAmountGenerator
     {
 
 
@@ -80,7 +80,7 @@ namespace Dominó
         }
     }
 
-    class DoubleNineAnimalToken : TokenAmountGenerator
+   public class DoubleNineAnimalToken : TokenAmountGenerator
     {
         public List<Token> GenerateTokens()
         {
@@ -113,22 +113,25 @@ namespace Dominó
     {
         public void GetTurnOrder(List<IPlayer> players)
         {
-            List<IPlayer> ret = new List<IPlayer>();
+            List<IPlayer> ret = ((IPlayer[])players.ToArray().Clone()).ToList();
             Random x = new Random();
             Random y = new Random(x.Next());
 
             int index = y.Next(players.Count);
+            int count = 0;
 
-            for (int i = index; i < players.Count; i++)
+            for (int i = index; i < ret.Count; i++)
             {
-                ret.Add(players[i]);
+                players[count] = ret[i];
+                count++;
             }
             for (int i = 0; i < index; i++)
             {
-                ret.Add(players[i]);
+                players[count] = ret[i];
+                count++;
             }
 
-            players = ret;
+            
         }
     }
 
