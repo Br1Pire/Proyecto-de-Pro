@@ -8,54 +8,70 @@ namespace ConsoleInterface
 
     class Printer
     {
-        public static int FancySelector(string initialMessage, string[] states)
-        {
-            int stateSelector = 0;
-            while (true)
-            {
-                Console.WriteLine(initialMessage);
-                Console.WriteLine(states[stateSelector]);
-                ConsoleKeyInfo key = Console.ReadKey();
-                if (key.Key == ConsoleKey.Enter)
-                {
-                    Console.Clear();
-                    return stateSelector;
-                }
-                if (key.Key == ConsoleKey.RightArrow && stateSelector == states.Length - 1)
-                {
-                    Console.Clear();
-                    continue;
-                }
-                if (key.Key == ConsoleKey.LeftArrow && stateSelector == 0)
-                {
-                    Console.Clear();
-                    continue;
-                }
+        //public static int FancySelector(string initialMessage, string[] states)
+        //{
+        //    int stateSelector = 0;
+        //    while (true)
+        //    {
+        //        Console.WriteLine(initialMessage);
+        //        Console.WriteLine(states[stateSelector]);
+        //        ConsoleKeyInfo key = Console.ReadKey();
+        //        if (key.Key == ConsoleKey.Enter)
+        //        {
+        //            Console.Clear();
+        //            return stateSelector;
+        //        }
+        //        if (key.Key == ConsoleKey.RightArrow && stateSelector == states.Length - 1)
+        //        {
+        //            Console.Clear();
+        //            continue;
+        //        }
+        //        if (key.Key == ConsoleKey.LeftArrow && stateSelector == 0)
+        //        {
+        //            Console.Clear();
+        //            continue;
+        //        }
 
-                switch (key.Key)
-                {
-                    case ConsoleKey.RightArrow:
-                        stateSelector++;
-                        break;
+        //        switch (key.Key)
+        //        {
+        //            case ConsoleKey.RightArrow:
+        //                stateSelector++;
+        //                break;
 
-                    case ConsoleKey.LeftArrow:
-                        stateSelector--;
-                        break;
-                }
-                Console.Clear();
-            }
-        }
+        //            case ConsoleKey.LeftArrow:
+        //                stateSelector--;
+        //                break;
+        //        }
+        //        Console.Clear();
+        //    }
+        //}
         static void Main(string[] args)
         {
-            bool process = true;
-            int number = 1;
-            List<IPlayer> players = new List<IPlayer>();
-            string[] states = { "=>Bota Gorda     BotaFlaca     Random     Finalizar", "  Bota Gorda   =>BotaFlaca     Random     Finalizar", "  Bota Gorda     BotaFlaca   =>Random     Finalizar", "  Bota Gorda     BotaFlaca     Random   =>Finalizar" };
-
+            Selector selector = new Selector();
             int stateSelector = -1;
-            while (process)
+            int amountPlayers = 0;
+
+            stateSelector = selector.FancySelector("Seleccione la cantidad de jugadores", new string[] { "=>2     4", "  2   =>4" });
+            switch (stateSelector)
             {
-                stateSelector = FancySelector("Añada un jugador", states);
+                case 0:
+                    amountPlayers = 2;
+                    break;
+
+                case 1:
+                    amountPlayers = 4;
+                    break;
+            }
+
+            int number = 1;
+
+            List<IPlayer> players = new List<IPlayer>();
+            string[] states = { "=>Bota Gorda     BotaFlaca     Random", "  Bota Gorda   =>BotaFlaca     Random", "  Bota Gorda     BotaFlaca   =>Random" };
+
+
+            while (number <= amountPlayers)
+            {
+                stateSelector = selector.FancySelector("Añada un jugador", states);
                 //while (true)
                 //{
                 //    Console.WriteLine("Añada un jugador");
@@ -108,21 +124,17 @@ namespace ConsoleInterface
                         number++;
                         break;
 
-                    case 3:
-                        process = false;
-                        break;
-
                 }
 
             }
 
 
-            int tokenType = FancySelector("Seleccione el tipo de Ficha que desea usar", new string[] { "=>Ficha Común     Ficha Animal", "  Ficha Común   =>Ficha Animal" });
+            int tokenType = selector.FancySelector("Seleccione el tipo de Ficha que desea usar", new string[] { "=>Ficha Común     Ficha Animal", "  Ficha Común   =>Ficha Animal" });
             TokenAmountGenerator generator = null;
 
             if (tokenType == 0)
             {
-                stateSelector = FancySelector("Seleccione que tipo de juego desea jugar respecto al número de fichas", new string[] { "=>Doble seis     Doble nueve", "  Doble seis   =>Doble nueve" });
+                stateSelector = selector.FancySelector("Seleccione que tipo de juego desea jugar respecto al número de fichas", new string[] { "=>Doble seis     Doble nueve", "  Doble seis   =>Doble nueve" });
 
                 switch (stateSelector)
                 {
@@ -138,7 +150,7 @@ namespace ConsoleInterface
             }
             else if (tokenType == 1)
             {
-                stateSelector = FancySelector("Seleccione que tipo de juego desea jugar respecto al número de fichas", new string[] { "=>Doble seis     Doble nueve", "  Doble seis   =>Doble nueve" });
+                stateSelector = selector.FancySelector("Seleccione que tipo de juego desea jugar respecto al número de fichas", new string[] { "=>Doble seis     Doble nueve", "  Doble seis   =>Doble nueve" });
 
                 switch (stateSelector)
                 {
@@ -153,7 +165,7 @@ namespace ConsoleInterface
                 }
             }
 
-            stateSelector = FancySelector("Seleccione el método para asignar los turnos", new string[] { "=>Primer jugador Random     Todos los jugadores Random", "  Primer jugador Random   =>Todos los jugadores Random" });
+            stateSelector = selector.FancySelector("Seleccione el método para asignar los turnos", new string[] { "=>Primer jugador Random     Todos los jugadores Random", "  Primer jugador Random   =>Todos los jugadores Random" });
             TurnOrderSelector turnSelector = null;
             switch (stateSelector)
             {
@@ -166,7 +178,7 @@ namespace ConsoleInterface
                     break;
             }
 
-            stateSelector = FancySelector("Seleccione la manera de repartir las fichas", new string[] { "=>Random     Por Seleccion", "  Random   =>Por Seleccion" });
+            stateSelector = selector.FancySelector("Seleccione la manera de repartir las fichas", new string[] { "=>Random     Por Seleccion", "  Random   =>Por Seleccion" });
             TokensDistributor tokensDistributor = null;
             switch (stateSelector)
             {
@@ -179,7 +191,7 @@ namespace ConsoleInterface
                     break;
             }
 
-            stateSelector = FancySelector("Seleccione commo desea que finalice cada partida", new string[] { "=>Común     Por expulsion", "  Común   =>Por expulsion" });
+            stateSelector = selector.FancySelector("Seleccione commo desea que finalice cada partida", new string[] { "=>Común     Por expulsion", "  Común   =>Por expulsion" });
             GameEnder gameEnder = null;
             switch (stateSelector)
             {

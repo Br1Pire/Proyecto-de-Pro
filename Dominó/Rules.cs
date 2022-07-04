@@ -187,13 +187,42 @@ namespace Dominó
         }
     }
 
-    public class SelectedTokenDistributor : TokensDistributor //hay q implementar
+    public class SelectedTokenDistributor : TokensDistributor 
     {
         public void DistributeTokens(List<Token> tokens, List<IPlayer> players)
         {
-            throw new NotImplementedException();
+            int maxAmountTokens= tokens[tokens.Count - 1].Higher() + 1;
+            List<Token> aux = ((Token[])tokens.ToArray().Clone()).ToList();
+            Selector selector = new Selector();
+
+            for (int i = 0; i <players.Count; i++)
+            {
+                int count = 0;
+                while (count < maxAmountTokens)
+                {
+                    int index = selector.FancySelector("Seleccione una de las siguientes Fichas para Player " + players[i].GetPlayerNumber, CreateStates(aux));
+                    players[i].GetHand.Add(aux[index]);
+                    aux.RemoveAt(index);
+                    count++;
+                }
+            }
+        }
+        string[] CreateStates(List<Token>tokens)
+        {
+            string[] ret= new string[tokens.Count];
+            for (int i = 0; i < ret.Length; i++)
+            {
+                for (int j = 0; j < ret.Length; j++)
+                {
+                    if (i == j) ret[i] += "=>" + tokens[j] + "\n";
+
+                    else ret[i] += "  " + tokens[j] + "\n";
+                }
+            }
+            return ret;
         }
     }
+    
     #endregion
 
     #region(Finalizacion del juego)

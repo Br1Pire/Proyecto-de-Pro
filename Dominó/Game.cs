@@ -2,6 +2,47 @@
 
 namespace Dominó
 {
+    public class Selector
+    {
+        public int FancySelector(string initialMessage, string[] states)
+        {
+            int stateSelector = 0;
+            while (true)
+            {
+                Console.WriteLine(initialMessage);
+                Console.WriteLine(states[stateSelector]);
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    Console.Clear();
+                    return stateSelector;
+                }
+                if (key.Key == ConsoleKey.RightArrow && stateSelector == states.Length - 1)
+                {
+                    Console.Clear();
+                    continue;
+                }
+                if (key.Key == ConsoleKey.LeftArrow && stateSelector == 0)
+                {
+                    Console.Clear();
+                    continue;
+                }
+
+                switch (key.Key)
+                {
+                    case ConsoleKey.RightArrow:
+                        stateSelector++;
+                        break;
+
+                    case ConsoleKey.LeftArrow:
+                        stateSelector--;
+                        break;
+                }
+                Console.Clear();
+            }
+        }
+    }
+
     //public class Token
     //{
     //    public int leftItem;
@@ -325,6 +366,7 @@ namespace Dominó
             int endGame = gameEnder.CheckIfTheGameIsOver(players);
             if (endGame > 0)
             {
+                
                 gameOver = true;
                 return "El Jugador " + endGame + " ha ganado";
             }
