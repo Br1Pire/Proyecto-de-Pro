@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominó
 {
+    // pa commentar menos generadores de Fichas
 
     #region(Generadores de Fichas)
     public interface TokenAmountGenerator
