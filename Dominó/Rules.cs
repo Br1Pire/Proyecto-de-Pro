@@ -140,21 +140,20 @@ namespace Dominó
     {
         public void GetTurnOrder(List<IPlayer> players)
         {
-            List<IPlayer> ret = new List<IPlayer>();
+            List<IPlayer> ret = ((IPlayer[])players.ToArray().Clone()).ToList();
 
             Random x = new Random();
             Random y = new Random(x.Next());
 
 
-            while (players.Count > 0)
+            for (int i = 0; i < players.Count; i++)
+            
             {
-                int index = y.Next(players.Count);
-                ret.Add(players[index]);
-                players.RemoveAt(index);
+                int index = y.Next(ret.Count);
+                players[i]=(ret[index]);
+                ret.RemoveAt(index);
 
             }
-
-            players = ret;
         }
     }
 
@@ -199,13 +198,18 @@ namespace Dominó
             for (int i = 0; i <players.Count; i++)
             {
                 int count = 0;
+                string status = "Fichas seleccionadas para el Jugador " + players[i].GetPlayerNumber+":\n\n";
                 while (count < maxAmountTokens)
                 {
-                    int index = selector.FancySelector("Seleccione una de las siguientes Fichas para Player " + players[i].GetPlayerNumber, CreateStates(aux));
+                    //Console.WriteLine(status);
+                    int index = selector.FancySelector(status+"\n\n"+"Seleccione una de las siguientes Fichas para Player " + players[i].GetPlayerNumber, CreateStates(aux));
                     players[i].GetHand.Add(aux[index]);
+                    status+=aux[index]+"  ";
                     aux.RemoveAt(index);
                     count++;
                 }
+            
+            
             }
         }
         string[] CreateStates(List<Token>tokens)
@@ -242,7 +246,7 @@ namespace Dominó
 
             for (int i = 0; i < players.Count; i++)
             {
-                if (players[i].GetHand.Count() == 0) return i + 1;
+                if (players[i].GetHand.Count() == 0) return players[i].GetPlayerNumber;
                 if (players[i].GetContinuesTimesPassed > 0) count++;
             }
             if (count == players.Count)
@@ -262,7 +266,7 @@ namespace Dominó
                         index = i;
                     }
                 }
-                return index + 1;
+                return players[index].GetPlayerNumber;
             }
             return 0;
         }
@@ -272,24 +276,39 @@ namespace Dominó
     {
         public int CheckIfTheGameIsOver(List<IPlayer> players)
         {
-            if (players.Count == 1) return 1;
+            int amount = 0;
+            foreach (IPlayer p in players)
+            {
+                if (p != null) amount++;
+            }
+
+            if (amount == 1) return players[0].GetPlayerNumber;
             for (int i = 0; i < players.Count; i++)
             {
-                if (players[i].GetContinuesTimesPassed == 2) players.RemoveAt(i);
+                if (players[i] == null) continue;
+                if (players[i].GetContinuesTimesPassed == 2)
+                {
+                    Console.WriteLine("\nEl Jugador" + players[i].GetPlayerNumber + " ha sido expulsado\n");
+                    players[i] = null;
+                }
+
             }
             int count = 0;
 
             for (int i = 0; i < players.Count; i++)
             {
-                if (players[i].GetHand.Count() == 0) return i + 1;
+                if (players[i] == null) continue;
+                if (players[i].GetHand.Count() == 0) return players[i].GetPlayerNumber;
                 if (players[i].GetContinuesTimesPassed > 0) count++;
             }
-            if (count == players.Count - 1)
+            
+            if (count == amount)
             {
                 int index = 0;
                 int memory = int.MinValue;
                 for (int i = 0; i < players.Count; i++)
                 {
+                    if (players[i] == null) continue;
                     int sum = 0;
                     for (int j = 0; j < players[i].GetHand.Count; j++)
                     {
@@ -301,7 +320,7 @@ namespace Dominó
                         index = i;
                     }
                 }
-                return index + 1;
+                return players[index].GetPlayerNumber;
             }
             return 0;
 

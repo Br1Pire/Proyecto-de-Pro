@@ -23,7 +23,7 @@ namespace Dominó
             get;
         }
         Token Play(List<Token> field);
-        
+
     }
     public class HighScoreDropperPlayer : IPlayer
     {
@@ -46,7 +46,7 @@ namespace Dominó
         {
             get { return playerNumber; }
         }
-        
+
         public List<Token> GetHand
         {
             get { return hand; }
@@ -77,7 +77,7 @@ namespace Dominó
 
             }
         }
-        
+
         public Token Play(List<Token> field)
         {
             SortHand(hand);
@@ -229,12 +229,12 @@ namespace Dominó
         {
             get { return playerNumber; }
         }
-       
+
         public List<Token> GetHand
         {
             get { return hand; }
         }
-       
+
         public void AssignToken(Token token)
         {
             hand.Add(token);
@@ -245,55 +245,100 @@ namespace Dominó
         }
         public Token Play(List<Token> field)
         {
+            //if (field.Count == 0)
+            //{
+            //    Random x = new Random();
+            //    int position = x.Next(hand.Count);
+            //    field.Add(hand[position]);
+            //    Token returner = hand[position];
+            //    hand.RemoveAt(position);
+            //    return returner;
+            //}
+            //Token tokenToplay = null;
+            //List<Token> possibleTokens = new List<Token>();
+            //List<int> indexesToRemove = new List<int>();
+            //for (int i = 0; i < hand.Count; i++)
+            //{
+            //    if (hand[i].LeftBack == field[0].LeftBack || hand[i].LeftBack == field[field.Count - 1].RightBack)
+            //    {
+            //        possibleTokens.Add(hand[i]);
+            //        indexesToRemove.Add(i);
+            //    }
+            //    else if (hand[i].RightBack == field[0].LeftBack || hand[i].RightBack == field[field.Count - 1].RightBack)
+            //    {
+            //        possibleTokens.Add(hand[i]);
+            //        indexesToRemove.Add(i);
+            //    }
+            //}
+            //if (possibleTokens.Count != 0)
+            //{
+            //    Random random = new Random();
+            //    int randomIndex = random.Next(possibleTokens.Count);
+            //    tokenToplay = possibleTokens[randomIndex];
+            //    if (tokenToplay.LeftBack == field[field.Count - 1].RightBack || tokenToplay.RightBack == field[field.Count - 1].RightBack)
+            //    {
+            //        if (tokenToplay.RightBack == field[field.Count - 1].RightBack) tokenToplay.Rotate();
+            //        field.Add(tokenToplay);
+            //        Token returner = tokenToplay;
+            //        hand.RemoveAt(indexesToRemove[randomIndex]);
+            //        continuesTimesPassed = 0;
+            //        return returner;
+            //    }
+            //    else if (tokenToplay.RightBack == field[0].LeftBack || tokenToplay.LeftBack == field[0].LeftBack)
+            //    {
+            //        if (tokenToplay.LeftBack == field[0].LeftBack) tokenToplay.Rotate();
+            //        field.Insert(0, tokenToplay);
+            //        Token returner = tokenToplay;
+            //        hand.RemoveAt(randomIndex);
+            //        continuesTimesPassed = 0;
+            //        return returner;
+            //    }
+
+            Random x = new Random();
+            Random y = new Random(x.Next());
+
             if (field.Count == 0)
             {
-                Random x = new Random();
-                int position = x.Next(hand.Count);
-                field.Add(hand[position]);
-                Token returner = hand[position];
-                hand.RemoveAt(position);
-                return returner;
+                int index = y.Next(hand.Count);
+                Token ret = hand[index];
+                field.Add(ret);
+                hand.RemoveAt(index);
+                return ret;
             }
-            Token tokenToplay = null;
-            List<Token> possibleTokens = new List<Token>();
-            List<int> indexesToRemove = new List<int>();
-            for (int i = 0; i < hand.Count; i++)
+
+            List<Token> aux = ((Token[])hand.ToArray().Clone()).ToList();
+
+            while (aux.Count > 0)
             {
-                if (hand[i].LeftBack == field[0].LeftBack || hand[i].LeftBack == field[field.Count - 1].RightBack)
+                int index = y.Next(aux.Count);
+                Token ret = aux[index];
+
+                if (ret.Contains(field[0].LeftBack))
                 {
-                    possibleTokens.Add(hand[i]);
-                    indexesToRemove.Add(i);
+                    if (ret.LeftBack == field[0].LeftBack) ret.Rotate();
+
+                    field.Insert(0, ret);
+                    hand.RemoveAt(index);
+                    continuesTimesPassed = 0;
+                    return ret;
                 }
-                else if (hand[i].RightBack == field[0].LeftBack || hand[i].RightBack == field[field.Count - 1].RightBack)
+                if (ret.Contains(field[field.Count - 1].RightBack))
                 {
-                    possibleTokens.Add(hand[i]);
-                    indexesToRemove.Add(i);
+                    if (ret.RightBack == field[field.Count - 1].RightBack) ret.Rotate();
+
+                    field.Add(ret);
+                    hand.RemoveAt(index);
+                    continuesTimesPassed = 0;
+                    return ret;
                 }
+                aux.RemoveAt(index);
             }
-            Random random = new Random();
-            int randomIndex = random.Next(possibleTokens.Count);
-            tokenToplay = possibleTokens[randomIndex];
-            if (tokenToplay.LeftBack == field[field.Count - 1].RightBack || tokenToplay.RightBack == field[field.Count - 1].RightBack)
-            {
-                if (tokenToplay.RightBack == field[field.Count - 1].RightBack) tokenToplay.Rotate();
-                field.Add(tokenToplay);
-                Token returner = tokenToplay;
-                hand.RemoveAt(randomIndex);
-                continuesTimesPassed = 0;
-                return returner;
-            }
-            else if (tokenToplay.RightBack == field[0].LeftBack || tokenToplay.LeftBack == field[0].LeftBack)
-            {
-                if (tokenToplay.LeftBack == field[0].LeftBack) tokenToplay.Rotate();
-                field.Insert(0, tokenToplay);
-                Token returner = tokenToplay;
-                hand.RemoveAt(randomIndex);
-                continuesTimesPassed = 0;
-                return returner;
-            }
+            
             TurnsPassed();
             return null;
         }
+
     }
-   
 }
+
+
