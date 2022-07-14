@@ -13,14 +13,10 @@ namespace Dominó
     public interface TokenAmountGenerator
     {
         public List<Token> GenerateTokens();
-
-
     }
 
     public class DoubleSixInToken : TokenAmountGenerator
     {
-
-
         public List<Token> GenerateTokens()
         {
             List<Token> ret = new List<Token>();
@@ -55,14 +51,11 @@ namespace Dominó
                 index++;
             }
             return ret;
-
         }
     }
 
    public class DoubleNineInToken : TokenAmountGenerator
     {
-
-
         public List<Token> GenerateTokens()
         {
             List<Token> ret = new List<Token>();
@@ -77,7 +70,6 @@ namespace Dominó
                 index++;
             }
             return ret;
-
         }
     }
 
@@ -97,19 +89,20 @@ namespace Dominó
                 index++;
             }
             return ret;
-
         }
     }
 
     #endregion
 
     #region(Selector de Turnos)
+
+    //Interfaz que va a contener un metodo que recibe como parametro la lista de jugadores
     public interface TurnOrderSelector
     {
         public void GetTurnOrder(List<IPlayer> players);
-
     }
 
+    //Esta clase va a escoger el primer jugador random y los siguientes son los que esten a su derecha en un sistema circular
     public class GetRandomFirstPlayer : TurnOrderSelector
     {
         public void GetTurnOrder(List<IPlayer> players)
@@ -131,11 +124,10 @@ namespace Dominó
                 players[count] = ret[i];
                 count++;
             }
-
-            
         }
     }
-
+    
+    //Esta clase va a escoger el orden de todos los jugadores de manera random
     public class GetAllPLayersRandom : TurnOrderSelector
     {
         public void GetTurnOrder(List<IPlayer> players)
@@ -152,7 +144,6 @@ namespace Dominó
                 int index = y.Next(ret.Count);
                 players[i]=(ret[index]);
                 ret.RemoveAt(index);
-
             }
         }
     }
@@ -160,11 +151,13 @@ namespace Dominó
     #endregion
 
     #region(Repartidor de tokens)
+    //Interfaz que va a contener un metodo que recibir como parametros una lista de jugadores y una lista con todas las fichas del juego
     public interface TokensDistributor
     {
         public void DistributeTokens(List<Token> tokens, List<IPlayer> players);
     }
 
+    //Esta clase va a repartir las fichas de manera aleatoria a los jugadores
     public class RadomTokenDistributor : TokensDistributor
     {
         public void DistributeTokens(List<Token> tokens, List<IPlayer> players)
@@ -187,6 +180,7 @@ namespace Dominó
         }
     }
 
+    //Esta clase va a permitir que el usuario escoja que fichas asignar a cada jugador
     public class SelectedTokenDistributor : TokensDistributor 
     {
         public void DistributeTokens(List<Token> tokens, List<IPlayer> players)
@@ -208,10 +202,9 @@ namespace Dominó
                     aux.RemoveAt(index);
                     count++;
                 }
-            
-            
             }
         }
+        
         string[] CreateStates(List<Token>tokens)
         {
             string[] ret= new string[tokens.Count];
@@ -231,13 +224,13 @@ namespace Dominó
     #endregion
 
     #region(Finalizacion del juego)
+   //Esta interfaz va a contener un metodo que recibe como parametro una lista de jugadores
     public interface GameEnder
     {
         public int CheckIfTheGameIsOver(List<IPlayer> players);
-
-
     }
 
+    //Esta clase va a contener la finalizacion del juego comun(cuando un jugador se quede sin fichas o se tranque el juego)
     public class CommonEnd : GameEnder
     {
         public int CheckIfTheGameIsOver(List<IPlayer> players)
@@ -272,6 +265,7 @@ namespace Dominó
         }
     }
 
+    //Esta clase lo que hace es que si un jugador se pasó dos veces seguidas en el juego, este es eliminado, y el último en quedar es el ganador
     public class ExpelEnd : GameEnder
     {
         public int CheckIfTheGameIsOver(List<IPlayer> players)
@@ -291,7 +285,6 @@ namespace Dominó
                     Console.WriteLine("\nEl Jugador" + players[i].GetPlayerNumber + " ha sido expulsado\n");
                     players[i] = null;
                 }
-
             }
             int count = 0;
 
@@ -323,9 +316,7 @@ namespace Dominó
                 return players[index].GetPlayerNumber;
             }
             return 0;
-
         }
-
     }
     #endregion
 

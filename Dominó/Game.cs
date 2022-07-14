@@ -56,7 +56,6 @@ namespace Dominó
         }
     }
 
-
     public class Game
     {
         List<IPlayer> players;

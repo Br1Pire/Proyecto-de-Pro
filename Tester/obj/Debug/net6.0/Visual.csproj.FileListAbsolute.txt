@@ -16,3 +16,21 @@ D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de
 D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Tester\obj\Debug\net6.0\Visual.pdb
 D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Tester\obj\Debug\net6.0\Visual.genruntimeconfig.cache
 D:\Escuela\2do año 2021-2022\Progrmación\Proyectos\Proyecto de Pro\Proyecto-de-Pro\Tester\obj\Debug\net6.0\ref\Visual.dll
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\bin\Debug\net6.0\Visual.exe
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\bin\Debug\net6.0\Visual.deps.json
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\bin\Debug\net6.0\Visual.runtimeconfig.json
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\bin\Debug\net6.0\Visual.dll
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\bin\Debug\net6.0\Visual.pdb
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\bin\Debug\net6.0\Dominó.dll
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\bin\Debug\net6.0\Dominó.pdb
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\obj\Debug\net6.0\Visual.csproj.AssemblyReference.cache
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\obj\Debug\net6.0\Visual.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\obj\Debug\net6.0\Visual.AssemblyInfoInputs.cache
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\obj\Debug\net6.0\Visual.AssemblyInfo.cs
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\obj\Debug\net6.0\Visual.csproj.CoreCompileInputs.cache
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\obj\Debug\net6.0\Visual.csproj.CopyComplete
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\obj\Debug\net6.0\Visual.dll
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\obj\Debug\net6.0\refint\Visual.dll
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\obj\Debug\net6.0\Visual.pdb
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\obj\Debug\net6.0\Visual.genruntimeconfig.cache
+C:\Users\Alejandro\Desktop\Project Domino\Proyecto-de-Pro\Tester\obj\Debug\net6.0\ref\Visual.dll
