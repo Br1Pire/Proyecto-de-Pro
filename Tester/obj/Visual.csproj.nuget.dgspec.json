@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\Tester.csproj": {}
+    "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\Visual.csproj": {}
   },
   "projects": {
     "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Dominó\\Dominó.csproj": {
@@ -62,12 +62,12 @@
         }
       }
     },
-    "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\Tester.csproj": {
+    "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\Visual.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\Tester.csproj",
-        "projectName": "Tester",
-        "projectPath": "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\Tester.csproj",
+        "projectUniqueName": "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\Visual.csproj",
+        "projectName": "Visual",
+        "projectPath": "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\Visual.csproj",
         "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
         "outputPath": "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\obj\\",
         "projectStyle": "PackageReference",
