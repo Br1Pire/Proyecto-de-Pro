@@ -71,7 +71,7 @@ namespace Dominó
 
     }
 
-    //InToken va a ser la ficha de tipo numeros, una ficha con valores numericos en sus caras
+    //InToken va a ser la ficha de tipo números, una ficha con valores numéricos en sus caras
     public class InToken : Token
     {
         public  InToken(int leftBack, int rightBack) : base(leftBack, rightBack) { }
@@ -80,7 +80,7 @@ namespace Dominó
     //Aqui definimos la clase Animal
      public class Animal
     {
-        //este va a ser el nomre de dicho animal
+        //este va a ser el nombre de dicho animal
         string name;
 
         public Animal(string name)
