@@ -36,14 +36,14 @@ namespace Dominó
         }
 
         //Higher va a devolver el valor máximo entre los valores de la cara de la ficha  
-        virtual public int Higher()
+        public int Higher()
         {
             if (leftBack < rightBack) return rightBack;
             return leftBack;
         }
 
         //Lower va a devolver el valor mínimo entre los valores de la cara de la ficha
-        virtual public int Lower()
+        public int Lower()
         {
             if (leftBack > rightBack) return rightBack;
             return leftBack;
@@ -58,7 +58,7 @@ namespace Dominó
         }
 
         //Contains va a preguntar si cierto valor esta contenido en la ficha
-        virtual public bool Contains(int value)
+        public bool Contains(int value)
         {
             return leftBack == value || rightBack == value;
         }
@@ -88,12 +88,12 @@ namespace Dominó
             this.name = name;
         }
 
-        //Equals esta redefinido para preguntar si el valor de una cara es igual al de otra o lo que es lo mismo si un animal es igual a otro
-        public override bool Equals(object? x)
-        {
-            if (this.name == ((Animal)x).name) return true;
-            return false;
-        }
+        ////Equals esta redefinido para preguntar si el valor de una cara es igual al de otra o lo que es lo mismo si un animal es igual a otro
+        //public override bool Equals(object? x)
+        //{
+        //    if (this.name == ((Animal)x).name) return true;
+        //    return false;
+        //}
 
         //ToString esta redefinido en este caso para que devuelva el nombre del animal
         public override string ToString()
@@ -110,12 +110,8 @@ namespace Dominó
 
         public AnimalToken(int leftBack, int rightBack) : base(leftBack, rightBack)
         {
-            //this.leftBack = leftBack;
-            //this.rightBack = rightBack;
             guide = new Animal[] { new Animal("Lion"), new Animal("Snake"), new Animal("Dog"), new Animal("Cat"), new Animal("Elephant"), new Animal("Mouse"), new Animal("Ant"), new Animal("Falcon"), new Animal("Duck"), new Animal("Worm") };
         }
-
-      
         
         //ToString esta redefinido en este caso para que imprima la ficha con sus caracteristicas
         public override string ToString()
