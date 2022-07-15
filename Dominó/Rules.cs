@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominó
 {
-    // pa commentar menos generadores de Fichas
+    // ya metele a generadores 
 
     #region(Generadores de Fichas)
     public interface TokenAmountGenerator
@@ -230,7 +230,7 @@ namespace Dominó
         public int CheckIfTheGameIsOver(List<IPlayer> players);
     }
 
-    //Esta clase va a contener la finalizacion del juego comun(cuando un jugador se quede sin fichas o se tranque el juego)
+    //Esta clase va a contener la finalizacion del juego común(cuando un jugador se quede sin fichas o se tranque el juego)
     public class CommonEnd : GameEnder
     {
         public int CheckIfTheGameIsOver(List<IPlayer> players)

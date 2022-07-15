@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Dominó
 {
-    //pa comentar
 
     public interface IPlayer
     {
