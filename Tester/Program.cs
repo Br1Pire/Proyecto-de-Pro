@@ -21,7 +21,7 @@ namespace ConsoleInterface
 
             while (!game.GameOver)
             {
-                Console.WriteLine(game.Run());
+                Console.WriteLine(game.Run()+"\n");
                 Thread.Sleep(1000);
                // Console.ReadLine();
             }
