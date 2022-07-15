@@ -6,25 +6,34 @@ using System.Threading.Tasks;
 
 namespace Dominó
 {
-    //pa comentar
-
+    //Interfaz que contiene un métodos para la funcionalidad del jugador 
     public interface IPlayer
     {
+
+        //Este método indica la cantidad de veces que el jugador se ha pasado
         public int GetContinuesTimesPassed
         {
             get;
         }
+
+        //Este método devuelve el número del jugador
         public int GetPlayerNumber
         {
             get;
         }
+
+        //Este método devuelve las fichas de la mano del jugador
         public List<Token> GetHand
         {
             get;
         }
+
+        //Este método reicbe como parámetro al campo con las fichas
         Token Play(List<Token> field);
 
     }
+
+    //Jugador Bota-Gorda
     public class HighScoreDropperPlayer : IPlayer
     {
         int continuesTimesPassed;
@@ -116,6 +125,7 @@ namespace Dominó
         }
     }
 
+    //Jugador Bota-Flaca
     public class LowScoreDropperPlayer : IPlayer
     {
         int continuesTimesPassed;
@@ -207,6 +217,7 @@ namespace Dominó
         }
     }
 
+    //Jugador Random
     public class RandomPlayer : IPlayer
     {
         int continuesTimesPassed;
@@ -245,7 +256,7 @@ namespace Dominó
         }
         public Token Play(List<Token> field)
         {
-            
+
             Random x = new Random();
             Random y = new Random(x.Next());
 
@@ -285,7 +296,7 @@ namespace Dominó
                 }
                 aux.RemoveAt(index);
             }
-            
+
             TurnsPassed();
             return null;
         }
