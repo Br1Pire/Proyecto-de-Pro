@@ -1,12 +1,6 @@
-﻿
-
-
-
-namespace Dominó
+﻿namespace Dominó
 {
-
-    // pa comentar
-
+    //Esta clase va a contener un método encargado de moverse por el menú y seleccionar la opcion deseada
     public class Selector
     {
         public int FancySelector(string initialMessage, string[] states)
@@ -56,6 +50,7 @@ namespace Dominó
         }
     }
 
+    //Esta clase va a contener la funcionalidad de juego con todos sus aspectos 
     public class Game
     {
         List<IPlayer> players;
@@ -112,15 +107,11 @@ namespace Dominó
 
         public string Run()
         {
-            
-
             string ret = "";
 
             int endGame = gameEnder.CheckIfTheGameIsOver(players);
             if (endGame > 0)
             {
-
-                
                 gameOver = true;
                 return "El Jugador " + endGame + " ha ganado";
             }
@@ -143,7 +134,6 @@ namespace Dominó
 
             turn++;
             return ret;
-
         }
     }
 }

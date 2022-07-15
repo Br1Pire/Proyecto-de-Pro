@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace Dominó
 {
-    // ya metele a generadores 
-
     #region(Generadores de Fichas)
+
+    //Interfaz que va a contener un método que generará una lista de fichas
     public interface TokenAmountGenerator
     {
         public List<Token> GenerateTokens();
     }
 
+    //Esta clase va a generar las fichas del tipo de juego "doble 6"
     public class DoubleSixInToken : TokenAmountGenerator
     {
         public List<Token> GenerateTokens()
@@ -35,6 +36,7 @@ namespace Dominó
         }
     }
 
+    //Esta clase va a generar las fichas del tipo de juego "doble 6" pero en vez de números van a ser animales
     public class DoubleSixAnimalToken : TokenAmountGenerator
     {
         public List<Token> GenerateTokens()
@@ -54,7 +56,8 @@ namespace Dominó
         }
     }
 
-   public class DoubleNineInToken : TokenAmountGenerator
+    //Esta clase va a generar las fichas del tipo de juego "doble 9"
+    public class DoubleNineInToken : TokenAmountGenerator
     {
         public List<Token> GenerateTokens()
         {
@@ -73,7 +76,8 @@ namespace Dominó
         }
     }
 
-   public class DoubleNineAnimalToken : TokenAmountGenerator
+    //Esta clase va a generar las fichas del tipo de juego "doble 9" pero en vez de números van a ser animales
+    public class DoubleNineAnimalToken : TokenAmountGenerator
     {
         public List<Token> GenerateTokens()
         {
@@ -96,7 +100,7 @@ namespace Dominó
 
     #region(Selector de Turnos)
 
-    //Interfaz que va a contener un metodo que recibe como parametro la lista de jugadores
+    //Interfaz que va a contener un método que recibe como parámetro la lista de jugadores
     public interface TurnOrderSelector
     {
         public void GetTurnOrder(List<IPlayer> players);
@@ -126,7 +130,7 @@ namespace Dominó
             }
         }
     }
-    
+
     //Esta clase va a escoger el orden de todos los jugadores de manera random
     public class GetAllPLayersRandom : TurnOrderSelector
     {
@@ -139,10 +143,10 @@ namespace Dominó
 
 
             for (int i = 0; i < players.Count; i++)
-            
+
             {
                 int index = y.Next(ret.Count);
-                players[i]=(ret[index]);
+                players[i] = (ret[index]);
                 ret.RemoveAt(index);
             }
         }
@@ -151,7 +155,7 @@ namespace Dominó
     #endregion
 
     #region(Repartidor de tokens)
-    //Interfaz que va a contener un metodo que recibir como parametros una lista de jugadores y una lista con todas las fichas del juego
+    //Interfaz que va a contener un método que recibirá como parámetros una lista de jugadores y una lista con todas las fichas del juego
     public interface TokensDistributor
     {
         public void DistributeTokens(List<Token> tokens, List<IPlayer> players);
@@ -181,33 +185,33 @@ namespace Dominó
     }
 
     //Esta clase va a permitir que el usuario escoja que fichas asignar a cada jugador
-    public class SelectedTokenDistributor : TokensDistributor 
+    public class SelectedTokenDistributor : TokensDistributor
     {
         public void DistributeTokens(List<Token> tokens, List<IPlayer> players)
         {
-            int maxAmountTokens= tokens[tokens.Count - 1].Higher() + 1;
+            int maxAmountTokens = tokens[tokens.Count - 1].Higher() + 1;
             List<Token> aux = ((Token[])tokens.ToArray().Clone()).ToList();
             Selector selector = new Selector();
 
-            for (int i = 0; i <players.Count; i++)
+            for (int i = 0; i < players.Count; i++)
             {
                 int count = 0;
-                string status = "Fichas seleccionadas para el Jugador " + players[i].GetPlayerNumber+":\n\n";
+                string status = "Fichas seleccionadas para el Jugador " + players[i].GetPlayerNumber + ":\n\n";
                 while (count < maxAmountTokens)
                 {
                     //Console.WriteLine(status);
-                    int index = selector.FancySelector(status+"\n\n"+"Seleccione una de las siguientes Fichas para Player " + players[i].GetPlayerNumber, CreateStates(aux));
+                    int index = selector.FancySelector(status + "\n\n" + "Seleccione una de las siguientes Fichas para Player " + players[i].GetPlayerNumber, CreateStates(aux));
                     players[i].GetHand.Add(aux[index]);
-                    status+=aux[index]+"  ";
+                    status += aux[index] + "  ";
                     aux.RemoveAt(index);
                     count++;
                 }
             }
         }
-        
-        string[] CreateStates(List<Token>tokens)
+
+        string[] CreateStates(List<Token> tokens)
         {
-            string[] ret= new string[tokens.Count];
+            string[] ret = new string[tokens.Count];
             for (int i = 0; i < ret.Length; i++)
             {
                 for (int j = 0; j < ret.Length; j++)
@@ -220,17 +224,17 @@ namespace Dominó
             return ret;
         }
     }
-    
+
     #endregion
 
     #region(Finalizacion del juego)
-   //Esta interfaz va a contener un metodo que recibe como parametro una lista de jugadores
+    //Interfaz que va a contener un método que recibe como parámetro una lista de jugadores
     public interface GameEnder
     {
         public int CheckIfTheGameIsOver(List<IPlayer> players);
     }
 
-    //Esta clase va a contener la finalizacion del juego común(cuando un jugador se quede sin fichas o se tranque el juego)
+    //Esta clase va a contener la finalización del juego común (cuando un jugador se quede sin fichas o se tranque el juego)
     public class CommonEnd : GameEnder
     {
         public int CheckIfTheGameIsOver(List<IPlayer> players)
@@ -294,7 +298,7 @@ namespace Dominó
                 if (players[i].GetHand.Count() == 0) return players[i].GetPlayerNumber;
                 if (players[i].GetContinuesTimesPassed > 0) count++;
             }
-            
+
             if (count == amount)
             {
                 int index = 0;

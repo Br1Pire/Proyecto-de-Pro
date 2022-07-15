@@ -2,7 +2,7 @@
 
 namespace ConsoleInterface
 {
-
+    //En esta parte del codigo va a estar todo lo relacionado con la interfaz del juego
     class VisualInterface
     {
         List<IPlayer> players = new List<IPlayer>();
@@ -30,7 +30,6 @@ namespace ConsoleInterface
             {
 
             }
-
         }
 
         public void InicialiceGame()
@@ -99,7 +98,6 @@ namespace ConsoleInterface
                 case 1:
                     amountOfPlayers = 4;
                     break;
-
             }
 
             int count = 1;
@@ -243,8 +241,6 @@ namespace ConsoleInterface
         {
             return ("Sus selecciones son: \n\nLista de jugaderes:\n" + message[0] + "\n\nTipo de ficha:\n-" + message[1] + "\nTipo de juego:\n-" + message[2] + "\nMétodo para asignar los trunos:\n-" + message[3] + "\nManera de repartir las fichas:\n-" + message[4] + "\nFinalización del juego:\n-" + message[5] + "\n");
         }
-
-
     }
 
     class Printer
