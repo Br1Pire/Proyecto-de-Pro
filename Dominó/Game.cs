@@ -100,7 +100,7 @@
             string ret = "";
             foreach (var token in players[turn].GetHand)
             {
-                ret += token+"  ";
+                ret += token + "  ";
             }
             return ret;
         }
@@ -124,13 +124,13 @@
                 if (turn >= players.Count) turn = 0;
             }
 
-            
-            string handBeforePlay=PrintHand();
+
+            string handBeforePlay = PrintHand();
             lastTokenPlayed = players[turn].Play(Table);
 
             if (lastTokenPlayed == null) ret = "Turno del Jugador " + players[turn].GetPlayerNumber + "\nMano: " + handBeforePlay + "\n" + "El Jugador se ha pasado " + " \n" + "Tablero: " + TableStatus();
 
-            else ret = "Turno del Jugador " + players[turn].GetPlayerNumber + "\nMano: "+handBeforePlay+"\n" + "El Jugador ha jugado " + lastTokenPlayed + " \n" + "Tablero: " + TableStatus();
+            else ret = "Turno del Jugador " + players[turn].GetPlayerNumber + "\nMano: " + handBeforePlay + "\n" + "El Jugador ha jugado " + lastTokenPlayed + " \n" + "Tablero: " + TableStatus();
 
             turn++;
             return ret;

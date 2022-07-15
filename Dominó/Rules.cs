@@ -155,6 +155,7 @@ namespace Dominó
     #endregion
 
     #region(Repartidor de tokens)
+
     //Interfaz que va a contener un método que recibirá como parámetros una lista de jugadores y una lista con todas las fichas del juego
     public interface TokensDistributor
     {
@@ -228,6 +229,7 @@ namespace Dominó
     #endregion
 
     #region(Finalizacion del juego)
+
     //Interfaz que va a contener un método que recibe como parámetro una lista de jugadores
     public interface GameEnder
     {
@@ -322,6 +324,7 @@ namespace Dominó
             return 0;
         }
     }
+
     #endregion
 
 }
