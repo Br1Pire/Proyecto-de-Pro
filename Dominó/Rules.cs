@@ -63,7 +63,7 @@ namespace Dominó
         {
             List<Token> ret = new List<Token>();
             int index = 0;
-            for (int i = 0; i <= 6; i++)
+            for (int i = 0; i <= 9; i++)
             {
                 for (int j = index; j <= 9; j++)
                 {
@@ -85,7 +85,7 @@ namespace Dominó
             int index = 0;
             for (int i = 0; i <= 9; i++)
             {
-                for (int j = index; j <= 6; j++)
+                for (int j = index; j <= 9; j++)
                 {
                     ret.Add(new AnimalToken(i, j));
                 }
