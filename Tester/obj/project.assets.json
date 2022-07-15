@@ -27,23 +27,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bruno\\.nuget\\packages\\": {},
+    "C:\\Users\\Alejandro\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\Visual.csproj",
+      "projectUniqueName": "C:\\Users\\Alejandro\\Desktop\\Project Domino\\Proyecto-de-Pro\\Tester\\Visual.csproj",
       "projectName": "Visual",
-      "projectPath": "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\Visual.csproj",
-      "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
-      "outputPath": "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Tester\\obj\\",
+      "projectPath": "C:\\Users\\Alejandro\\Desktop\\Project Domino\\Proyecto-de-Pro\\Tester\\Visual.csproj",
+      "packagesPath": "C:\\Users\\Alejandro\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Alejandro\\Desktop\\Project Domino\\Proyecto-de-Pro\\Tester\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Alejandro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -58,8 +58,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Dominó\\Dominó.csproj": {
-              "projectPath": "D:\\Escuela\\2do año 2021-2022\\Progrmación\\Proyectos\\Proyecto de Pro\\Proyecto-de-Pro\\Dominó\\Dominó.csproj"
+            "C:\\Users\\Alejandro\\Desktop\\Project Domino\\Proyecto-de-Pro\\Dominó\\Dominó.csproj": {
+              "projectPath": "C:\\Users\\Alejandro\\Desktop\\Project Domino\\Proyecto-de-Pro\\Dominó\\Dominó.csproj"
             }
           }
         }
@@ -88,7 +88,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
