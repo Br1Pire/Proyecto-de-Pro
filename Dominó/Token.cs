@@ -105,39 +105,18 @@ namespace Dominó
     //AnimalToken va a ser la ficha de tipo animales, una ficha con nombres de animales en sus caras
     public class AnimalToken : Token
     {
-        int leftBack;
-        int rightBack;
+        
         Animal[] guide;
 
         public AnimalToken(int leftBack, int rightBack) : base(leftBack, rightBack)
         {
-            this.leftBack = leftBack;
-            this.rightBack = rightBack;
+            //this.leftBack = leftBack;
+            //this.rightBack = rightBack;
             guide = new Animal[] { new Animal("Lion"), new Animal("Snake"), new Animal("Dog"), new Animal("Cat"), new Animal("Elephant"), new Animal("Mouse"), new Animal("Ant"), new Animal("Falcon"), new Animal("Duck"), new Animal("Worm") };
         }
 
-        //Contains va a preguntar si cierto valor esta contenido en la ficha
-        public override bool Contains(int value)
-        {
-
-            return leftBack == value || rightBack == value;
-
-        }
-
-        //Higher va a devolver el valor máximo entre los valores de la cara de la ficha  
-        public override int Higher()
-        {
-            if (leftBack > rightBack) return leftBack;
-            return rightBack;
-        }
-
-        //Lower va a devolver el valor mínimo entre los valores de la cara de la ficha
-        public override int Lower()
-        {
-            if (leftBack < rightBack) return leftBack;
-            return rightBack;
-        }
-
+      
+        
         //ToString esta redefinido en este caso para que imprima la ficha con sus caracteristicas
         public override string ToString()
         {
