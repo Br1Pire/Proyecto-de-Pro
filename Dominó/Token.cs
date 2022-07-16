@@ -63,7 +63,7 @@ namespace Dominó
             return leftBack == value || rightBack == value;
         }
 
-        //ToString esta redefinido en este caso para que imprima la ficha con sus caracteristicas
+        //ToString esta redefinido en este caso para que imprima la ficha con sus valores
         public override string ToString()
         {
             return "[ " + leftBack + " | " + rightBack + " ]";
@@ -87,13 +87,6 @@ namespace Dominó
         {
             this.name = name;
         }
-
-        ////Equals esta redefinido para preguntar si el valor de una cara es igual al de otra o lo que es lo mismo si un animal es igual a otro
-        //public override bool Equals(object? x)
-        //{
-        //    if (this.name == ((Animal)x).name) return true;
-        //    return false;
-        //}
 
         //ToString esta redefinido en este caso para que devuelva el nombre del animal
         public override string ToString()
