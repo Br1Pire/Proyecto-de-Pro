@@ -280,7 +280,14 @@ namespace Dominó
                 if (p != null) amount++;
             }
 
-            if (amount == 1) return players[0].GetPlayerNumber;
+            if (amount == 1)
+            {
+                foreach (IPlayer p in players)
+                {
+                    if (p != null) return p.GetPlayerNumber;
+                }
+            }
+
             for (int i = 0; i < players.Count; i++)
             {
                 if (players[i] == null) continue;

@@ -17,7 +17,7 @@ namespace ConsoleInterface
 
         public void RunVisual()
         {
-            InicialiceGame();
+            InicializeGame();
 
             while (!game.GameOver)
             {
@@ -32,7 +32,7 @@ namespace ConsoleInterface
             }
         }
 
-        public void InicialiceGame()
+        public void InicializeGame()
         {
             bool final = false;
 
